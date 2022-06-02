@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>depends-quickfix</artifactId>
+	<packaging>pom</packaging>
+	<name>QuickFIX Dependencies</name>
+
+	<parent>
+		<groupId>debug.gs.depends</groupId>
+		<artifactId>depends</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<dependencies>
+
+		<!-- these are not part of quickfix the library but they are needed with it -->
+		<dependency>
+			<groupId>org.apache.mina</groupId>
+			<artifactId>mina-core</artifactId>
+			<version>${mina.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- QuickFIX -->
+		<dependency>
+			<groupId>org.quickfixj</groupId>
+			<artifactId>quickfixj-all</artifactId>
+			<version>${quickfixj.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.quickfixj</groupId>
+					<artifactId>quickfixj-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.quickfixj</groupId>
+					<artifactId>quickfixj-codegenerator</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.quickfixj</groupId>
+					<artifactId>quickfixj-dictgenerator</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.quickfixj</groupId>
+					<artifactId>quickfixj-messages-all</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+</project>
