@@ -13,6 +13,11 @@
 	</parent>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>gs.debug.depends</groupId>
+			<artifactId>depends-common</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
 	</dependencies>
 </project>

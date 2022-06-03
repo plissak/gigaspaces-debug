@@ -13,6 +13,10 @@
 	</parent>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>gs.debug.hibernate-npe</groupId>
+			<artifactId>hibernate-npe-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>
