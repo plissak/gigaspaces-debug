@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>depends-http</artifactId>
 	<packaging>pom</packaging>
-	<name>HTTP Dependencies</name>
+	<name>Maven Dependencies: HTTP</name>
 
 	<parent>
 		<groupId>gs.debug.depends</groupId>

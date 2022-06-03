@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>depends-esper</artifactId>
 	<packaging>pom</packaging>
-	<name>Esper Dependencies</name>
+	<name>Maven Dependencies: Esper</name>
 
 	<parent>
 		<groupId>gs.debug.depends</groupId>

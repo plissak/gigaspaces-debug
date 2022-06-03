@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>depends-quickfix</artifactId>
 	<packaging>pom</packaging>
-	<name>QuickFIX Dependencies</name>
+	<name>Maven Dependencies: QuickFIX</name>
 
 	<parent>
 		<groupId>gs.debug.depends</groupId>
