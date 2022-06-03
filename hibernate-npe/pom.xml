@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>gs.debug.depends</groupId>
-	<artifactId>depends</artifactId>
-	<name>Maven Dependencies</name>
+	<groupId>gs.debug.hibernate-npe</groupId>
+	<artifactId>hibernate-npe</artifactId>
+	<name>Debug Hibernate NullPointerException</name>
 	<packaging>pom</packaging>
 
 	<parent>
@@ -15,9 +15,9 @@
 	</parent>
 
 	<modules>
-		<module>depends-esper</module>
-		<module>depends-http</module>
-		<module>depends-poi</module>
-		<module>depends-quickfix</module>
+		<module>common</module>
+		<module>client</module>
+		<module>server</module>
+		<module>deploy</module>
 	</modules>
 </project>

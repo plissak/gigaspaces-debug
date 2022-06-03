@@ -7,7 +7,7 @@
 	<name>POI Dependencies</name>
 
 	<parent>
-		<groupId>debug.gs.depends</groupId>
+		<groupId>gs.debug.depends</groupId>
 		<artifactId>depends</artifactId>
 		<version>${revision}</version>
 	</parent>

@@ -17,10 +17,10 @@
 			<scope>runtime</scope>
 
 			<excludes>
-				<exclude>debug.gs.depends:depends-esper</exclude>
-				<exclude>debug.gs.depends:depends-http</exclude>
-				<exclude>debug.gs.depends:depends-poi</exclude>
-				<exclude>debug.gs.depends:depends-quickfix</exclude>
+				<exclude>gs.debug.depends:depends-esper</exclude>
+				<exclude>gs.debug.depends:depends-http</exclude>
+				<exclude>gs.debug.depends:depends-poi</exclude>
+				<exclude>gs.debug.depends:depends-quickfix</exclude>
 			</excludes>
 		</dependencySet>
 	</dependencySets>

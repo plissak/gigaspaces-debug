@@ -2,9 +2,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>debug.gs</groupId>
-	<artifactId>gs-hibernate-npe</artifactId>
-	<name>GigaSpaces Hibernate NPE Debug</name>
+	<groupId>gs.debug</groupId>
+	<artifactId>debug</artifactId>
+	<name>GigaSpaces Debug</name>
 	<version>${revision}</version>
 	<packaging>pom</packaging>
 
@@ -133,13 +133,14 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:ssh://git@github.com:plissak/gs-hibernate-npe.git</connection>
+		<connection>scm:git:ssh://git@github.com:plissak/gigaspaces-debug.git</connection>
 		<tag>HEAD</tag>
 	</scm>
 
 	<modules>
 		<module>depends</module>
 		<module>pu-common</module>
+		<module>hibernate-npe</module>
 	</modules>
 
 	<build>

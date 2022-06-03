@@ -7,8 +7,8 @@
 	<name>PU Common JARs</name>
 
 	<parent>
-		<groupId>debug.gs</groupId>
-		<artifactId>gs-hibernate-npe</artifactId>
+		<groupId>gs.debug</groupId>
+		<artifactId>debug</artifactId>
 		<version>${revision}</version>
 	</parent>
 
@@ -377,7 +377,7 @@
 
 		<!-- Complex Dependencies -->
 		<dependency>
-			<groupId>debug.gs.depends</groupId>
+			<groupId>gs.debug.depends</groupId>
 			<artifactId>depends-quickfix</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
@@ -390,7 +390,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>debug.gs.depends</groupId>
+			<groupId>gs.debug.depends</groupId>
 			<artifactId>depends-esper</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
@@ -403,14 +403,14 @@
 		</dependency>
 
 		<dependency>
-			<groupId>debug.gs.depends</groupId>
+			<groupId>gs.debug.depends</groupId>
 			<artifactId>depends-http</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
 
 		<dependency>
-			<groupId>debug.gs.depends</groupId>
+			<groupId>gs.debug.depends</groupId>
 			<artifactId>depends-poi</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
