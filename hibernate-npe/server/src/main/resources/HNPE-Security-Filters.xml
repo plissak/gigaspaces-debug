@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:os-core="http://www.openspaces.org/schema/core"
+	xmlns:os-jms="http://www.openspaces.org/schema/jms"
+	xmlns:os-events="http://www.openspaces.org/schema/events"
+	xmlns:os-remoting="http://www.openspaces.org/schema/remoting"
+	xmlns:os-sla="http://www.openspaces.org/schema/sla"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.openspaces.org/schema/core http://www.openspaces.org/schema/core/openspaces-core.xsd 
+  http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd 
+  http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd 
+  http://www.openspaces.org/schema/sla http://www.openspaces.org/schema/sla/openspaces-sla.xsd 
+  http://www.openspaces.org/schema/jms http://www.openspaces.org/schema/jms/openspaces-jms.xsd">
+
+	<util:list id="filterOperationCodes">
+		<value>BEFORE_WRITE</value>
+		<value>AFTER_WRITE</value>
+		<value>BEFORE_READ</value>
+		<value>BEFORE_TAKE</value>
+		<value>BEFORE_NOTIFY</value>
+		<value>BEFORE_GETADMIN</value>
+		<value>BEFORE_AUTHENTICATION</value>
+		<value>BEFORE_CLEAN_SPACE</value>
+		<value>BEFORE_UPDATE</value>
+		<value>AFTER_UPDATE</value>
+		<value>BEFORE_READ_MULTIPLE</value>
+		<value>AFTER_READ_MULTIPLE</value>
+		<value>BEFORE_TAKE_MULTIPLE</value>
+		<value>AFTER_TAKE_MULTIPLE</value>
+		<value>BEFORE_NOTIFY_TRIGGER</value>
+		<value>AFTER_NOTIFY_TRIGGER</value>
+		<value>BEFORE_ALL_NOTIFY_TRIGGER</value>
+		<value>AFTER_ALL_NOTIFY_TRIGGER</value>
+		<value>BEFORE_EXECUTE</value>
+		<value>BEFORE_REMOVE</value>
+		<value>AFTER_REMOVE</value>
+	</util:list>
+
+</beans>
