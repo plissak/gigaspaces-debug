@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:os-core="http://www.openspaces.org/schema/core"
+	xmlns:os-remoting="http://www.openspaces.org/schema/remoting"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+  http://www.openspaces.org/schema/core http://www.openspaces.org/schema/core/openspaces-core.xsd
+  http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
+
+	<bean id="logInit" class="gs.debug.hnpe.server.util.LogInitializer" init-method="init">
+		<property name="processingUnit" value="${pu.name}"/>
+		<property name="loggingLevel" value="${loggingLevel}"/>
+		<property name="transactionLogLevel" value="${transactionLogLevel}"/>
+		<property name="hibernateLogLevel" value="${hibernateLogLevel}"/>
+		<property name="toConsole" value="${toConsole}"/>
+		<property name="maxFileSize" value="${maxFileSize}"/>
+		<property name="maxBackUpIndex" value="${maxBackUpIndex}"/>
+		<property name="puInstanceId" value ="${clusterInfo.instanceId}"/>
+		<property name="puBackupId" value="${clusterInfo.backupId}"/>
+	</bean>
+		
+</beans>

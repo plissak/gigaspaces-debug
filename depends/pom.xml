@@ -16,6 +16,7 @@
 
 	<modules>
 		<module>depends-common</module>
+		<module>depends-deploy</module>
 		<module>depends-esper</module>
 		<module>depends-http</module>
 		<module>depends-poi</module>
