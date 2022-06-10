@@ -73,6 +73,8 @@
 				<exclude>com.squareup.okhttp3:*</exclude>
 				<exclude>com.squareup.okio:*</exclude>
 				<exclude>com.squareup.retrofit2:*</exclude>
+				<exclude>com.sun.istack:istack-commons-runtime</exclude>
+				<exclude>com.sun.xml.fastinfoset:FastInfoset</exclude>
 				<exclude>com.zaxxer:HikariCP-java7</exclude>
 				<exclude>commons-beanutils:*</exclude>
 				<exclude>commons-codec:commons-codec</exclude>
@@ -93,6 +95,7 @@
 				<exclude>javax.mail:mail</exclude>
 				<exclude>javax.persistence:javax.persistence-api</exclude>
 				<exclude>javax.transaction:jta</exclude>
+				<exclude>javax.xml.bind:jaxb-api</exclude>
 				<exclude>jaxen:jaxen</exclude>
 				<exclude>jboss-logging:jboss-logging</exclude>
 				<exclude>jgraph:jgraph</exclude>
@@ -128,6 +131,7 @@
 				<exclude>org.dom4j:dom4j</exclude>
 				<exclude>org.eclipse.collections:*</exclude>
 				<exclude>org.glassfish:javax.el</exclude>
+				<exclude>org.glassfish.jaxb:*</exclude>
 				<exclude>org.hibernate:*</exclude>
 				<exclude>org.hibernate.common:*</exclude>
 				<exclude>org.hibernate.javax.persistence:*</exclude>
@@ -142,6 +146,7 @@
 				<exclude>org.jetbrains.kotlin:*</exclude>
 				<exclude>org.jgrapht:*</exclude>
 				<exclude>org.json:json</exclude>
+				<exclude>org.jvnet.staxex:stax-ex</exclude>
 				<exclude>org.mozilla:rhino</exclude>
 				<exclude>org.projectlombok:lombok</exclude>
 				<exclude>org.quartz-scheduler:quartz</exclude>
