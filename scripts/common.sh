@@ -10,11 +10,9 @@ export LOG_GRID=/tmp/grid.log
 export LOG_DEPLOY=/tmp/deploy.log
 export ENABLE_DEBUG=Y
 
-export XAP_NIC_ADDRESS=${HOSTNAME}
-export XAP_LOOKUP_LOCATORS=${HOSTNAME}:${LOC_PORT}
-export XAP_MANAGER_SERVERS="${HOSTNAME};lus=${LOC_PORT}"
-export XAP_LOOKUP_GROUPS=${USER}
-export XAP_ZONE=generic
+export GS_CLI_VERBOSE=true
+export LOOKUP_GROUPS=${USER}
+export ZONES=generic
 
 if [ "${PU_COUNT}" == "" ]; then
 	PU_COUNT=1
@@ -36,29 +34,38 @@ fi
 
 
 # Java Options
-COMMON_PARAMS="-server -Xss1m -Dcom.gs.multicast.enabled=false -Dcom.gs.security.disable-commit-abort-authentication=true -Dcom.gs.zones=${XAP_ZONE}"
+COMMON_PARAMS="-server -Xss1m -Dcom.gs.multicast.enabled=false -Dcom.gs.security.disable-commit-abort-authentication=true -Dcom.gs.zones=${ZONES}"
 JAVA_VERSION=`${JAVA_HOME}/bin/java -version 2>&1 | head -n 1 | awk -F'"' '{print $2}'`
 JAVA_MAJOR=`echo ${JAVA_VERSION} | awk -F'.' '{print $1}'`
 if [ ${JAVA_MAJOR} -ge 9 ]; then
 	COMMON_PARAMS="${COMMON_PARAMS} --add-opens=jdk.management/com.sun.management.internal=ALL-UNNAMED --add-modules=ALL-SYSTEM"
 fi
 
-export XAP_OPTIONS_EXT="-Dcom.sun.jini.reggie.initialUnicastDiscoveryPort=${LOC_PORT}"
-export XAP_GSA_OPTIONS="${COMMON_PARAMS} -DPROC_DESC=GigaSpaces_${XAP_LOOKUP_GROUPS} -Xmx256m"
-export XAP_GSM_OPTIONS="${COMMON_PARAMS} -Xmx256m"
-export XAP_LUS_OPTIONS="${COMMON_PARAMS} -Xmx256m"
-export XAP_MANAGER_OPTIONS="${COMMON_PARAMS} -Xmx256m"
-export XAP_WEBUI_OPTIONS="${COMMON_PARAMS} -Xmx256m"
+export GSA_JAVA_OPTIONS="${COMMON_PARAMS} -DPROC_DESC=GigaSpaces_${LOOKUP_GROUPS} -Xmx256m"
+export GSM_JAVA_OPTIONS="${COMMON_PARAMS} -Xmx256m"
+export LUS_JAVA_OPTIONS="${COMMON_PARAMS} -Xmx256m"
+export GSM_JAVA_OPTIONS="${COMMON_PARAMS} -Xmx256m"
 
 
 # GSC Options
-GSC_OPTIONS="${GSC_OPTIONS} ${COMMON_PARAMS} -DmyGroup=${XAP_LOOKUP_GROUPS} -XX:+HeapDumpOnOutOfMemoryError"
 if [ "${GSC_HEAP_MAX_MB}" == "" ]; then
         GSC_HEAP_MAX_MB=2048
 fi
-GSC_OPTIONS="${GSC_OPTIONS} -Xmx${GSC_HEAP_MAX_MB}m -Xms${GSC_HEAP_MAX_MB}m -XX:NewSize=200m -XX:MaxNewSize=200m"
-GSC_OPTIONS="${GSC_OPTIONS} -DcombinedPuBackupCount=0 -Dspace-config.mirror-service.cluster.backups-per-partition=0"
-export XAP_GSC_OPTIONS=${GSC_OPTIONS}
+GSC_JAVA_OPTIONS="${GSC_JAVA_OPTIONS} ${COMMON_PARAMS} -DmyGroup=${LOOKUP_GROUPS} "
+GSC_JAVA_OPTIONS="${GSC_JAVA_OPTIONS} -Xmx${GSC_HEAP_MAX_MB}m -Xms${GSC_HEAP_MAX_MB}m -XX:NewSize=200m -XX:MaxNewSize=200m"
+GSC_JAVA_OPTIONS="${GSC_JAVA_OPTIONS} -DcombinedPuBackupCount=0 -Dspace-config.mirror-service.cluster.backups-per-partition=0"
+export GSC_JAVA_OPTIONS
+
+
+# XAP Variables
+export XAP_NIC_ADDRESS=${HOSTNAME}
+export XAP_LOOKUP_LOCATORS=${HOSTNAME}:${LOC_PORT}
+export XAP_MANAGER_SERVERS="${HOSTNAME};lus=${LOC_PORT}"
+export XAP_OPTIONS_EXT="-Dcom.sun.jini.reggie.initialUnicastDiscoveryPort=${LOC_PORT}"
+export XAP_LUS_OPTIONS="$LUS_JAVA_OPTIONS"
+export XAP_GSA_OPTIONS="$GSA_JAVA_OPTIONS"
+export XAP_GSM_OPTIONS="$GSM_JAVA_OPTIONS"
+export XAP_GSC_OPTIONS="$GSC_JAVA_OPTIONS"
 
 
 # Determine Project Path
@@ -100,5 +107,5 @@ deploy_pu() {
 	fi
   
   	echo "Deploying ${ARTIFACT} PU..."
-	${GS_HOME}/bin/gs.sh --timeout=3600 pu deploy --max-instances-per-vm=1 --zones=${XAP_ZONE} --backups=0 --partitions=${PU_COUNT} "${XAP_LOOKUP_GROUPS}-${ARTIFACT}" "${ARTIFACT_JAR}" 2>&1 | tee "${LOG_DEPLOY}"  
+	${GS_HOME}/bin/gs.sh --timeout=3600 pu deploy --max-instances-per-vm=1 --zones=${ZONES} --backups=0 --partitions=${PU_COUNT} "${LOOKUP_GROUPS}-${ARTIFACT}" "${ARTIFACT_JAR}" 2>&1 | tee "${LOG_DEPLOY}"  
 }
