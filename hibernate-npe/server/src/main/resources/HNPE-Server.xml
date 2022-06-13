@@ -15,8 +15,7 @@
   http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
 
 	<bean id="hnpeAccessControlFilter"
-		class="gs.debug.hnpe.server.security.DebugAccessFilter"
-		p:refUserName="${space.user}" />
+		class="gs.debug.hnpe.server.security.DebugAccessFilter" />
 
 	<bean id="hnpeFilterFactory"
 		class="org.openspaces.core.space.filter.SpaceFilterProviderFactory"

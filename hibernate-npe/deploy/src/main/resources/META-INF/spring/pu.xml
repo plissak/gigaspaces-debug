@@ -25,7 +25,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>HPNE.properties</value>
+				<value>HNPE.properties</value>
 			</list>
 		</property>
 	</bean>
