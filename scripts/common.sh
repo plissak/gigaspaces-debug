@@ -33,7 +33,7 @@ if [ "$GS_HOME" == "" ]; then
 fi
 
 
-# Java Options
+# Grid Options
 COMMON_PARAMS="-server -Xss1m -Dcom.gs.multicast.enabled=false -Dcom.gs.security.disable-commit-abort-authentication=true -Dcom.gs.zones=${ZONES}"
 JAVA_VERSION=`${JAVA_HOME}/bin/java -version 2>&1 | head -n 1 | awk -F'"' '{print $2}'`
 JAVA_MAJOR=`echo ${JAVA_VERSION} | awk -F'.' '{print $1}'`
@@ -46,10 +46,8 @@ export GSM_JAVA_OPTIONS="${COMMON_PARAMS} -Xmx256m"
 export LUS_JAVA_OPTIONS="${COMMON_PARAMS} -Xmx256m"
 export GSM_JAVA_OPTIONS="${COMMON_PARAMS} -Xmx256m"
 
-
-# GSC Options
 if [ "${GSC_HEAP_MAX_MB}" == "" ]; then
-        GSC_HEAP_MAX_MB=2048
+	GSC_HEAP_MAX_MB=2048
 fi
 GSC_JAVA_OPTIONS="${GSC_JAVA_OPTIONS} ${COMMON_PARAMS} -DmyGroup=${LOOKUP_GROUPS} "
 GSC_JAVA_OPTIONS="${GSC_JAVA_OPTIONS} -Xmx${GSC_HEAP_MAX_MB}m -Xms${GSC_HEAP_MAX_MB}m -XX:NewSize=200m -XX:MaxNewSize=200m"
