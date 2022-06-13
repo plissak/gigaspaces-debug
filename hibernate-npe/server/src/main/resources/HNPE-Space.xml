@@ -20,10 +20,6 @@
 		p:spaceDataSource-ref="hnpeHibernateDataSource"
 		p:properties-ref="hnpeSpaceProperties">
 
-		<property name="securityConfig">
-			<bean class="org.openspaces.core.space.SecurityConfig"
-				p:username="${space.user}" p:password="${space.password}" />
-		</property>
 		<property name="filterProviders">
 			<list>
 				<ref bean="hnpeFilterFactory" />
