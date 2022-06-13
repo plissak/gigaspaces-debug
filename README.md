@@ -1,7 +1,32 @@
 # GigaSpaces Debug Project
 
-## gs.debug : pu-common
-ZIP file of all the third-party JARs to be installed in "lib/optional/pu-common"
+## Maven Build
+First build this Maven project
 
-## gs.debug.hibernate-npe
-Contains modules to build a GigaSpaces PU for debugging the Hibernate null-pointer exception
+
+## Install PU Common JARs
+Unzip the "pu-common" JAR file that is built by this project into the "lib/optional/pu-common" folder.
+
+
+## Hibernate NPE
+Corresponding support ticket: 6820
+
+### Start Grid
+Start the GigaSpaces grid:
+
+```
+scripts/hibernate-npe.sh grid
+
+```
+
+### Deploy PU
+Deploy the PU:
+
+```
+scripts/hibernate-npe.sh deploy
+
+```
+
+
+### Test Client
+
