@@ -31,12 +31,12 @@
 	<bean id="hnpeHibernateDataSourceReadWrite"
 		class="org.openspaces.persistency.hibernate.DefaultHibernateSpaceSynchronizationEndpointFactoryBean"
 		p:useMerge="${hibernate.use-merge}"
-		p:sessionFactory-ref="referenceSessionFactory">
+		p:sessionFactory-ref="hnpeSessionFactory">
 	</bean>
 
 	<util:list id="hnpeInitLoadList">
 		<value>gs.debug.hnpe.common.domain.Widget</value>
-		<value>gs.debug.hnpe.common.domain.IdentiferDomain</value>
+		<value>gs.debug.hnpe.server.domain.IdentifierDomain</value>
 	</util:list>
 
 	<util:list id="hnpeInitLoadQueryScanningList">
