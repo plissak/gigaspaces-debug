@@ -4,6 +4,7 @@ import org.openspaces.core.GigaSpace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 
+import gs.debug.hnpe.common.domain.Part;
 import gs.debug.hnpe.common.domain.Widget;
 import gs.debug.hnpe.common.service.DebugWriteAccess;
 
@@ -35,6 +36,15 @@ public class DebugWriteAccessImpl implements DebugWriteAccess {
 			if (widget.getId() == null) {
 				widget.setId(idGenerator.getNextIdentifier(Widget.class.getName()));
 			}
+
+			if (widget.getParts() != null) {
+				for (Part part : widget.getParts()) {
+					if (part.getId() == null) {
+						part.setId(idGenerator.getNextIdentifier(Part.class.getName()));
+					}
+				}
+			}
+
 			space.write(widget);
 			return space.readById(Widget.class, widget.getId());
 		}

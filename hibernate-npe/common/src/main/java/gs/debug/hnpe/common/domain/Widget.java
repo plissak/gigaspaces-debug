@@ -1,6 +1,7 @@
 package gs.debug.hnpe.common.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Access;
@@ -14,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -43,6 +45,7 @@ public class Widget implements Serializable {
 	private String name;
 	private Set<String> codes;
 	private Set<Part> parts;
+	private List<Long> orderedIdentifiers;
 	private LocalDate createdDate;
 	private LocalDateTime updatedTime;
 
@@ -87,6 +90,18 @@ public class Widget implements Serializable {
 
 	public void setParts(Set<Part> parts) {
 		this.parts = parts;
+	}
+
+	@Fetch(value=FetchMode.SELECT)
+	@ElementCollection(fetch=FetchType.EAGER)
+	@CollectionTable(name="WIDGET_ID_TABLE", joinColumns=@JoinColumn(name="WIDGET_ID"))
+	@OrderColumn(name="IDENTIFIER_INDEX")
+	@Column(name="IDENTIFIER")
+	public List<Long> getOrderedIdentifiers() {
+		return orderedIdentifiers;
+	}
+	public void setOrderedIdentifiers(List<Long> orderedIdentifiers) {
+		this.orderedIdentifiers = orderedIdentifiers;
 	}
 
 	@Column(name = "CREATED_DATE")
