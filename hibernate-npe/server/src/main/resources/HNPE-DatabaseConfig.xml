@@ -22,10 +22,16 @@
                             http://www.openspaces.org/schema/sla http://www.openspaces.org/schema/sla/openspaces-sla.xsd
                             http://www.openspaces.org/schema/jms http://www.openspaces.org/schema/jms/openspaces-jms.xsd">
 
+	<bean id="initSQL" class="gs.debug.hnpe.server.util.SQLParser"
+		factory-method="parse">
+		<constructor-arg value="${db.initFile}" />
+	</bean>
+
 	<bean id="hnpeDb" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close" p:driverClassName="${db.driverClassName}"
 		p:url="${db.url}" p:username="${db.user}" p:password="${db.password}"
-		p:validationQuery="${db.validationQuery}" />
+		p:validationQuery="${db.validationQuery}"
+		p:connectionInitSqls-ref="initSQL" />
 
 	<bean id="hnpeSessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
