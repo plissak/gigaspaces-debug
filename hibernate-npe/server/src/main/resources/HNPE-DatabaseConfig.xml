@@ -27,11 +27,12 @@
 		<constructor-arg value="${db.initFile}" />
 	</bean>
 
-	<bean id="hnpeDb" class="org.apache.commons.dbcp2.BasicDataSource"
+	<bean id="hnpeDb"
+		class="gs.debug.hnpe.server.util.CustomDataSource"
 		destroy-method="close" p:driverClassName="${db.driverClassName}"
 		p:url="${db.url}" p:username="${db.user}" p:password="${db.password}"
-		p:validationQuery="${db.validationQuery}"
-		p:connectionInitSqls-ref="initSQL" />
+		p:validationQuery="${db.validationQuery}" p:initSqls-ref="initSQL"
+		p:showSql="${db.show_sql}" />
 
 	<bean id="hnpeSessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"

@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 
 /**
  * Parses file resource into SQL lines for org.apache.commons.dbcp2.BasicDataSource
@@ -16,6 +17,7 @@ public class SQLParser {
 
 	public static Collection<String> parse(String fileName) throws IOException {
 		if (fileName == null || fileName.isEmpty()) {
+			Logger.getLogger(SQLParser.class).info("Parsed 0 lines");
 			return Collections.EMPTY_LIST;
 		}
 
@@ -26,6 +28,7 @@ public class SQLParser {
 				sql.add(trimmed);
 			}
 		}
+		Logger.getLogger(SQLParser.class).info("Parsed " + sql.size() + " lines (" + fileName + ")");
 		return sql;
 	}
 
