@@ -1,7 +1,7 @@
 # GigaSpaces Debug Project
 
 ## Maven Build
-This is a Maven project which must be built before testing can begin.
+This is a Maven project which must be built **before** continuing.
 
 
 ## Install PU Common JARs
@@ -9,7 +9,7 @@ Unzip the "pu-common" JAR file that is built by this project into the "lib/optio
 
 
 ## Environment Variables
-These environment variables must be set before running any scripts:
+These environment variables must be set **before** running any scripts:
 * JAVA_HOME - JDK installation directory
 * GS_HOME - GigaSpaces installation directory
 
