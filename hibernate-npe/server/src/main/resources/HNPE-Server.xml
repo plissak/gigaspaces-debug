@@ -26,7 +26,7 @@
 		class="gs.debug.hnpe.server.service.DebugWriteAccessImpl"
 		autowire="byType"
 		p:space-ref="hnpeGigaSpace" />
-
+		
 	<bean id="idGenerator"
 		class="gs.debug.hnpe.server.service.IdGeneratorImpl"
 		p:space-ref="hnpeGigaSpace" />
@@ -34,5 +34,10 @@
 	<util:list id="hnpeServiceList">
 		<ref bean="debugWriteAccess" />
 	</util:list>
+
+	<bean id="widgetProcessor"
+		class="gs.debug.hnpe.server.processor.WidgetProcessor"
+		autowire="byType"
+		p:space-ref="hnpeGigaSpace" />
 
 </beans>
