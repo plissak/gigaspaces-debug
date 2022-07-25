@@ -34,7 +34,7 @@ public class DebugAccessFilter implements ISpaceFilter {
 	private void checkContext(SpaceContext context) {
 		SecurityContext security = context == null ? null : context.getSecurityContext();
 		if (security == null) {
-			logger.warn("Missing security context", new Exception("Missing security context"));
+//			logger.warn("Missing security context", new Exception("Missing security context"));
 		}
 	}
 
