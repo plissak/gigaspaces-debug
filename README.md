@@ -26,8 +26,8 @@ scripts/hibernate-npe.sh grid
 ```
 Stopping this script will bring the grid down.
 
-### Deploy PU
-Deploy the PU:
+### Deploy PUs
+Deploy the PUs:
 
 ```
 scripts/hibernate-npe.sh deploy
