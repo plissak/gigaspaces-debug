@@ -14,11 +14,6 @@ export GS_CLI_VERBOSE=true
 export LOOKUP_GROUPS=${USER}
 export ZONES=generic
 
-if [ "${PU_COUNT}" == "" ]; then
-	PU_COUNT=1
-fi
-export PU_COUNT
-
 
 # Validation
 if [ "$JAVA_HOME" == "" ]; then
@@ -89,21 +84,26 @@ export PROJECT_PATH
 # Start Grid
 start_grid() {
 	echo "Starting grid..."
-	${GS_HOME}/bin/gs.sh host run-agent --manager --gsc=${PU_COUNT} $* 2>&1 | tee "${LOG_GRID}"
+	${GS_HOME}/bin/gs.sh host run-agent --manager $* 2>&1 | tee "${LOG_GRID}"
 }
 
 
 # Deploy PU
 deploy_pu() {
 	ARTIFACT=$1
-	ARTIFACT_JAR=`find "${PROJECT_PATH}" -name "${ARTIFACT}*.jar" | grep -v "sources.jar"`
+	PU_COUNT=$2
 
+	ARTIFACT_JAR=`find "${PROJECT_PATH}" -name "${ARTIFACT}*.jar" | grep -v "sources.jar"`
 	if [ "$ARTIFACT_JAR" == "" ]; then
 		echo "Cannot find $ARTIFACT JAR. Please build Maven project."
 		echo ""
 		exit 1
 	fi
   
+	if [ "${PU_COUNT}" == "" ]; then
+		PU_COUNT=1
+	fi
+
   	echo "Deploying ${ARTIFACT} PU..."
 	${GS_HOME}/bin/gs.sh --timeout=3600 pu deploy --max-instances-per-vm=1 --zones=${ZONES} --backups=0 --partitions=${PU_COUNT} "${LOOKUP_GROUPS}-${ARTIFACT}" "${ARTIFACT_JAR}" 2>&1 | tee "${LOG_DEPLOY}"  
 }
