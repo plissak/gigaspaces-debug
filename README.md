@@ -15,7 +15,7 @@ These environment variables must be set **before** running any scripts:
 
 
 ## Hibernate NPE
-Corresponding support ticket: 6820
+Corresponding support ticket: [6820](https://support2.gigaspaces.com/support/tickets/6820)
 
 ### Start Grid
 Start the GigaSpaces grid:
@@ -34,6 +34,9 @@ scripts/hibernate-npe.sh deploy
 
 ```
 
+As the PUs deploy, space objects are added to the space and a space iterator is used to read those space objects.  Log files are located under:
 
-### Test Client
+```
+~/logs/debug
 
+```
