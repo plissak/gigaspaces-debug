@@ -2,8 +2,8 @@ package gs.debug.hnpe.client.util;
 
 import org.apache.log4j.Logger;
 
+import gs.debug.core.common.util.LogUtil;
 import gs.debug.hnpe.common.domain.Widget;
-import gs.debug.hnpe.common.util.LogUtil;
 import gs.debug.hnpe.common.util.WidgetUtil;
 
 public class InitializeMain {

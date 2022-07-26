@@ -1,4 +1,4 @@
-package gs.debug.hnpe.common.util;
+package gs.debug.core.common.util;
 
 import org.apache.log4j.Appender;
 import org.apache.log4j.BasicConfigurator;

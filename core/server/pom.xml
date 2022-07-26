@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>debug-core-server</artifactId>
+	<packaging>jar</packaging>
+	<name>Debug Core Server</name>
+
+	<parent>
+		<groupId>gs.debug.core</groupId>
+		<artifactId>debug-core</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>gs.debug.core</groupId>
+			<artifactId>debug-core-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>gs.debug.hibernate-npe</groupId>
+			<artifactId>hibernate-npe-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${commons.dbcp.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+	</dependencies>
+</project>

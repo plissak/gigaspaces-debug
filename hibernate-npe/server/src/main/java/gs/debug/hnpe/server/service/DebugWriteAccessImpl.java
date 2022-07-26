@@ -8,6 +8,7 @@ import gs.debug.hnpe.common.domain.Part;
 import gs.debug.hnpe.common.domain.Widget;
 import gs.debug.hnpe.common.service.DebugWriteAccess;
 
+@SuppressWarnings("deprecation")
 public class DebugWriteAccessImpl implements DebugWriteAccess {
 	private GigaSpace space;
 	private IdGenerator idGenerator;

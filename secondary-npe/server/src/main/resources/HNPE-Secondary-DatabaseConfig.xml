@@ -27,16 +27,16 @@
 		<constructor-arg value="${db.initFile}" />
 	</bean>
 
-	<bean id="hnpeDb"
+	<bean id="hnpeSecondaryDb"
 		class="gs.debug.core.server.util.CustomDataSource"
 		destroy-method="close" p:driverClassName="${db.driverClassName}"
 		p:url="${db.url}" p:username="${db.user}" p:password="${db.password}"
 		p:validationQuery="${db.validationQuery}" p:initSqls-ref="initSQL"
 		p:showSql="${db.show_sql}" />
 
-	<bean id="hnpeSessionFactory"
+	<bean id="hnpeSecondarySessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
-		p:dataSource-ref="hnpeDb" p:packagesToScan-ref="hnpeDomainPackages">
+		p:dataSource-ref="hnpeSecondaryDb" p:packagesToScan-ref="hnpeSecondaryDomainPackages">
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${db.hibernateDialect}</prop>

@@ -22,33 +22,24 @@
                             http://www.openspaces.org/schema/sla http://www.openspaces.org/schema/sla/openspaces-sla.xsd
                             http://www.openspaces.org/schema/jms http://www.openspaces.org/schema/jms/openspaces-jms.xsd">
 
-	<bean id="initSQL" class="gs.debug.core.server.util.SQLParser"
-		factory-method="parse">
-		<constructor-arg value="${db.initFile}" />
+	<bean id="hnpeSecondaryHibernateDataSource"
+		class="org.openspaces.persistency.hibernate.DefaultHibernateSpaceDataSourceFactoryBean"
+		p:sessionFactory-ref="hnpeSecondarySessionFactory"
+		p:initialLoadEntries-ref="hnpeSecondaryInitLoadList"
+		p:initialLoadQueryScanningBasePackages-ref="hnpeSecondaryInitLoadQueryScanningList" />
+
+	<bean id="hnpeSecondaryHibernateDataSourceReadWrite"
+		class="org.openspaces.persistency.hibernate.DefaultHibernateSpaceSynchronizationEndpointFactoryBean"
+		p:useMerge="${hibernate.use-merge}"
+		p:sessionFactory-ref="hnpeSecondarySessionFactory">
 	</bean>
 
-	<bean id="hnpeDb"
-		class="gs.debug.core.server.util.CustomDataSource"
-		destroy-method="close" p:driverClassName="${db.driverClassName}"
-		p:url="${db.url}" p:username="${db.user}" p:password="${db.password}"
-		p:validationQuery="${db.validationQuery}" p:initSqls-ref="initSQL"
-		p:showSql="${db.show_sql}" />
+	<util:list id="hnpeSecondaryInitLoadList">
+	</util:list>
 
-	<bean id="hnpeSessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
-		p:dataSource-ref="hnpeDb" p:packagesToScan-ref="hnpeDomainPackages">
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">${db.hibernateDialect}</prop>
-				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
-				<prop key="hibernate.cache.use_second_level_cache">false</prop>
-				<prop key="hibernate.cache.use_query_cache">false</prop>
-				<prop key="hibernate.hbm2ddl.auto">${db.hbm2ddl.auto}</prop>
-				<prop key="hibernate.jdbc.batch_size">50</prop>
-				<prop key="hibernate.show_sql">${db.show_sql}</prop>
-				<prop key="hibernate.listeners.envers.autoRegister">${db.enable.level.audits}</prop>
-				<prop key="hibernate.enable_lazy_load_no_trans">${db.lazyLoadNoTransaction}</prop>
-			</props>
-		</property>
-	</bean>
+	<util:list id="hnpeSecondaryInitLoadQueryScanningList">
+	</util:list>
+
+	<util:list id="hnpeSecondaryDomainPackages">
+	</util:list>
 </beans>

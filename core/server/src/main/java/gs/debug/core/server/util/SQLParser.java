@@ -1,4 +1,4 @@
-package gs.debug.hnpe.server.util;
+package gs.debug.core.server.util;
 
 import java.io.IOException;
 import java.util.ArrayList;

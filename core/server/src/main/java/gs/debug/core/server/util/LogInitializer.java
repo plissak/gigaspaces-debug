@@ -1,4 +1,4 @@
-package gs.debug.hnpe.server.util;
+package gs.debug.core.server.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import org.apache.log4j.PatternLayout;
 import org.apache.log4j.RollingFileAppender;
 import org.springframework.beans.factory.annotation.Required;
 
-import gs.debug.hnpe.common.util.LogUtil;
+import gs.debug.core.common.util.LogUtil;
 
 public class LogInitializer {
 	private String processingUnit;

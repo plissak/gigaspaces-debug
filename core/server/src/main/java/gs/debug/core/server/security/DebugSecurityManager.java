@@ -1,4 +1,4 @@
-package gs.debug.hnpe.server.security;
+package gs.debug.core.server.security;
 
 import java.util.Properties;
 

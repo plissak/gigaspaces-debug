@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Required;
 
 import gs.debug.hnpe.server.domain.IdentifierDomain;
 
+@SuppressWarnings("deprecation")
 public class IdGeneratorImpl implements IdGenerator {
 	private GigaSpace space;
 

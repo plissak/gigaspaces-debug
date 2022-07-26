@@ -14,30 +14,25 @@
   http://www.openspaces.org/schema/core http://www.openspaces.org/schema/core/openspaces-core.xsd
   http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
 
-	<bean id="hnpeAccessControlFilter"
+	<bean id="hnpeSecondaryAccessControlFilter"
 		class="gs.debug.core.server.security.DebugAccessFilter" />
 
-	<bean id="hnpeFilterFactory"
+	<bean id="hnpeSecondaryFilterFactory"
 		class="org.openspaces.core.space.filter.SpaceFilterProviderFactory"
-		p:filter-ref="hnpeAccessControlFilter" p:activeWhenBackup="false"
+		p:filter-ref="hnpeSecondaryAccessControlFilter" p:activeWhenBackup="false"
 		p:operationCodesNames-ref="filterOperationCodes" />
 
-	<bean id="debugWriteAccess"
-		class="gs.debug.hnpe.server.service.DebugWriteAccessImpl"
+	<bean id="debugSecondaryWriteAccess"
+		class="gs.debug.hnpe.server.service.DebugSecondaryWriteAccessImpl"
 		autowire="byType"
-		p:space-ref="hnpeGigaSpace" />
+		p:space-ref="hnpeSecondaryGigaSpace" />
 		
-	<bean id="idGenerator"
-		class="gs.debug.hnpe.server.service.IdGeneratorImpl"
-		p:space-ref="hnpeGigaSpace" />
-
-	<util:list id="hnpeServiceList">
-		<ref bean="debugWriteAccess" />
+	<util:list id="hnpeSecondaryServiceList">
+		<ref bean="debugSecondaryWriteAccess" />
 	</util:list>
 
 	<bean id="widgetProcessor"
-		class="gs.debug.hnpe.server.processor.WidgetProcessor"
-		autowire="byType"
-		p:space-ref="hnpeGigaSpace" />
+		class="gs.debug.hnpe.server.processor.WidgetSecondaryProcessor"
+		p:primarySpace-ref="hpneGigaSpace" />
 
 </beans>

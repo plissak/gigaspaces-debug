@@ -14,7 +14,7 @@
   http://www.openspaces.org/schema/core http://www.openspaces.org/schema/core/openspaces-core.xsd
   http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
 
-	<bean id="logInit" class="gs.debug.hnpe.server.util.LogInitializer" init-method="init">
+	<bean id="logInit" class="gs.debug.core.server.util.LogInitializer" init-method="init">
 		<property name="processingUnit" value="${pu.name}"/>
 		<property name="loggingLevel" value="${loggingLevel}"/>
 		<property name="transactionLogLevel" value="${transactionLogLevel}"/>

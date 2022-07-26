@@ -1,4 +1,4 @@
-package gs.debug.hnpe.common.util;
+package gs.debug.core.common.util;
 
 import com.gigaspaces.security.Authority;
 import com.gigaspaces.security.directory.UserDetails;
