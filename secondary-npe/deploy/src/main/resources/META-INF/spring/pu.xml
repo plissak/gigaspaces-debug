@@ -25,13 +25,16 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
+				<value>common.properties</value>
+				<value>common-server.properties</value>
 				<value>HNPE-Secondary.properties</value>
 			</list>
 		</property>
 	</bean>
 
 	<import resource="classpath*:/Server-Logging.xml" />
-	<import resource="classpath*:/Server-Security-Filters.xml" />
+	<import resource="classpath*:/Server-Security.xml" />
+	<import resource="classpath*:/Common-User.xml" />
 	<import resource="classpath*:/HNPE-Secondary-Space.xml" />
 	<import resource="classpath*:/HNPE-Secondary-Server.xml" />
 	<import resource="classpath*:/HNPE-Secondary-DatabaseConfig.xml" />

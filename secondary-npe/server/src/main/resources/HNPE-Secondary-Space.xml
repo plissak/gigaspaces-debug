@@ -20,6 +20,10 @@
 		p:spaceDataSource-ref="hnpeSecondaryHibernateDataSource"
 		p:properties-ref="hnpeSecondarySpaceProperties">
 
+		<property name="securityConfig">
+			<bean class="org.openspaces.core.space.SecurityConfig"
+				p:username="${pu.user}" p:password="${pu.password}" />
+		</property>
 		<property name="filterProviders">
 			<list>
 				<ref bean="hnpeSecondaryFilterFactory" />

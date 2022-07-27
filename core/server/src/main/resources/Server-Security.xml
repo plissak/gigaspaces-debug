@@ -20,6 +20,14 @@
   http://www.openspaces.org/schema/sla http://www.openspaces.org/schema/sla/openspaces-sla.xsd 
   http://www.openspaces.org/schema/jms http://www.openspaces.org/schema/jms/openspaces-jms.xsd">
 
+	<bean id="securityConfig"
+		class="gs.debug.core.server.security.DebugSecurityConfig"
+		p:credentialsProvider-ref="credentialsProvider" />
+
+	<bean id="credentialsProvider"
+		class="gs.debug.core.server.security.DebugCredentialsProvider"
+		p:userDetails-ref="userDetails" />
+
 	<util:list id="filterOperationCodes">
 		<value>BEFORE_WRITE</value>
 		<value>AFTER_WRITE</value>

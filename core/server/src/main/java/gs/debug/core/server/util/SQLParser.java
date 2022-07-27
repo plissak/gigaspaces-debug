@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
@@ -21,13 +22,19 @@ public class SQLParser {
 			return Collections.EMPTY_LIST;
 		}
 
+		Logger.getLogger(SQLParser.class).info("Parsing file: " + fileName);
 		Collection<String> sql = new ArrayList();
-		for (String line : IOUtils.readLines(SQLParser.class.getResource(fileName).openStream())) {
-			String trimmed = line.trim();
-			if (! trimmed.isEmpty() && ! trimmed.startsWith("--")) {
-				sql.add(trimmed);
+		List<String> lines = IOUtils.readLines(SQLParser.class.getResource(fileName).openStream());
+
+		if (lines != null) {
+			for (String line : lines) {
+				String trimmed = line.trim();
+				if (! trimmed.isEmpty() && ! trimmed.startsWith("--")) {
+					sql.add(trimmed);
+				}
 			}
 		}
+
 		Logger.getLogger(SQLParser.class).info("Parsed " + sql.size() + " lines (" + fileName + ")");
 		return sql;
 	}

@@ -20,6 +20,9 @@
 		p:spaceDataSource-ref="hnpeHibernateDataSource"
 		p:properties-ref="hnpeSpaceProperties">
 
+		<property name="securityConfig">
+			<ref bean="securityConfig" />
+		</property>
 		<property name="filterProviders">
 			<list>
 				<ref bean="hnpeFilterFactory" />
@@ -30,9 +33,11 @@
 	<context:component-scan base-package="gs.debug" />
 	<context:annotation-config />
 
-	<os-core:giga-space id="hnpeGigaSpace" space="hnpeSpace" tx-manager="hnpeTransactionManager" />
+	<os-core:giga-space id="hnpeGigaSpace"
+		space="hnpeSpace" tx-manager="hnpeTransactionManager" />
 	<os-core:giga-space-context />
-	<os-core:distributed-tx-manager id="hnpeTransactionManager" />
+	<os-core:distributed-tx-manager
+		id="hnpeTransactionManager" />
 
 	<util:properties id="hnpeSpaceProperties">
 		<prop key="space-config.engine.cache_policy">1</prop>

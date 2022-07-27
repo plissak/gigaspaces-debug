@@ -9,7 +9,7 @@ import gs.debug.hnpe.common.service.DebugReadAccess;
 import gs.debug.hnpe.common.service.DebugWriteAccess;
 
 public class DebugClientConnection {
-	private static final String CONTEXT_PATH = "HNPE-Client-Spring.xml";
+	private static final String CONTEXT_PATH = "HNPE-Client-Connection.xml";
 
 	private static DebugClientConnection connection;
 

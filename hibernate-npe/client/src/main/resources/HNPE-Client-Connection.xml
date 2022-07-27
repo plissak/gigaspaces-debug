@@ -10,24 +10,16 @@
   http://www.openspaces.org/schema/core http://www.openspaces.org/schema/core/openspaces-core.xsd
   http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd
   http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
+  
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>common.properties</value>
+			</list>
+		</property>
+	</bean>
 
-	<os-core:distributed-tx-manager
-		id="transactionManager" />
-
-	<bean id="hpneRemoteGigaSpace"
-		class="org.openspaces.core.space.UrlSpaceFactoryBean"
-		p:url="jini://*/*/HibernateNPE" p:versioned="true"
-		p:userDetails-ref="userDetails" />
-
-	<os-core:giga-space id="hpneGigaSpace"
-		space="hpneRemoteGigaSpace" tx-manager="transactionManager" />
-
-	<bean id="hpneReadAccess"
-		class="gs.debug.hnpe.common.service.DebugReadAccess" autowire="byType"
-		p:space-ref="hpneGigaSpace" />
-
-	<os-remoting:executor-proxy
-		id="hpneWriteAccess" giga-space="hpneGigaSpace"
-		interface="gs.debug.hnpe.common.service.DebugWriteAccess" />
-
+	<import resource="classpath*:/Common-User.xml" />
+	<import resource="classpath*:/HNPE-Client-Spring.xml" />
 </beans>

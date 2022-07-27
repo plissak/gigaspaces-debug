@@ -11,20 +11,13 @@
   http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd
   http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
 
-<!-- 	<bean id="userDetails" -->
-<!-- 		class="gs.debug.core.common.util.BasicUserDetails" /> -->
-
 	<os-core:distributed-tx-manager
 		id="transactionManager" />
 
-<!-- 	<bean id="hpneSecondaryRemoteGigaSpace" -->
-<!-- 		class="org.openspaces.core.space.UrlSpaceFactoryBean" -->
-<!-- 		p:url="jini://*/*/HibernateSecondaryNPE" p:versioned="true" -->
-<!-- 		p:userDetails-ref="userDetails" /> -->
-
 	<bean id="hpneSecondaryRemoteGigaSpace"
 		class="org.openspaces.core.space.UrlSpaceFactoryBean"
-		p:url="jini://*/*/HibernateSecondaryNPE" p:versioned="true" />
+		p:url="jini://*/*/HibernateSecondaryNPE" p:versioned="true"
+		p:userDetails-ref="userDetails" />
 
 	<os-core:giga-space id="hpneSecondaryGigaSpace"
 		space="hpneSecondaryRemoteGigaSpace" tx-manager="transactionManager" />
