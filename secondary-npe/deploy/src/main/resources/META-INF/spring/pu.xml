@@ -40,5 +40,5 @@
 	<import resource="classpath*:/HNPE-Secondary-DatabaseConfig.xml" />
 	<import resource="classpath*:/HNPE-Secondary-DBCommon.xml" />
 
-	<import resource="classpath*:/HNPE-Client-Spring.xml" />
+	<import resource="classpath*:/HNPE-Client-Spring-View.xml" />
 </beans>

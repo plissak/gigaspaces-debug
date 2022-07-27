@@ -11,11 +11,17 @@
   http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd
   http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
 
-	<os-core:distributed-tx-manager
-		id="transactionManager" />
+	<bean id="hpneRemoteGigaSpace"
+		class="org.openspaces.core.space.UrlSpaceFactoryBean"
+		p:url="jini://*/*/HibernateNPE" p:versioned="true"
+		p:userDetails-ref="userDetails" />
 
-	<os-core:giga-space id="hpneGigaSpace"
-		space="hpneRemoteGigaSpace" tx-manager="transactionManager" />
+	<bean id="hpneReadAccess"
+		class="gs.debug.hnpe.common.service.DebugReadAccess" autowire="byType"
+		p:space-ref="hpneGigaSpace" />
 
-	<import resource="classpath*:/HNPE-Client-Base.xml" />
+	<os-remoting:executor-proxy
+		id="hpneWriteAccess" giga-space="hpneGigaSpace"
+		interface="gs.debug.hnpe.common.service.DebugWriteAccess" />
+
 </beans>

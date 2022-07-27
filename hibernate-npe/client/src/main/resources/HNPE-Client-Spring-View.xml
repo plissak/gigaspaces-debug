@@ -11,11 +11,15 @@
   http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd
   http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
 
-	<os-core:distributed-tx-manager
-		id="transactionManager" />
+	<import resource="classpath*:/HNPE-Client-Base.xml" />
+
+	<os-core:local-view id="hpneViewGigaSpace"
+		space="hpneRemoteGigaSpace">
+		<os-core:view-query
+			class="gs.debug.hnpe.common.domain.Widget" where="" />
+	</os-core:local-view>
 
 	<os-core:giga-space id="hpneGigaSpace"
-		space="hpneRemoteGigaSpace" tx-manager="transactionManager" />
+		space="hpneViewGigaSpace" />
 
-	<import resource="classpath*:/HNPE-Client-Base.xml" />
 </beans>
