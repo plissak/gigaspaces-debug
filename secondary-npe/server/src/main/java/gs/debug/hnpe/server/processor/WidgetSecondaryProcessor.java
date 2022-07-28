@@ -54,9 +54,7 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		logger.info("After properties set...");
-		for (Widget widget : readAccess.getWidgets()) {
-			process(widget, false);
-		}
+		readAll();
 		isPropertiesSet = true;
 	}
 
@@ -64,19 +62,41 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 	public void startPostPrimary(AfterSpaceModeChangeEvent event) {
 		if (isPropertiesSet || event.getSpace().isEmbedded()) {
 			logger.info("Entering post-primary...");
-			iterateAndStartListening();
+
+			try {
+				readAll();
+			}
+			catch (Throwable t) {
+				logger.error(t.getMessage(), t);
+			}
+			try {
+				iterateAndStartListening();
+			}
+			catch (Throwable t) {
+				logger.error(t.getMessage(), t);
+			}
 		}
 		else {
 			logger.info("Ignoring post-primary");
 		}
 	}
 
+	public void readAll() {
+		logger.info("Begin read all");
+		for (Widget widget : readAccess.getWidgets()) {
+			process(widget, false);
+		}
+		logger.info("End read all");
+	}
+
 	public void iterateAndStartListening() {
 
 		// read space objects
+		logger.info("Begin iterate all");
 		for (Iterator<Widget> iterator = primarySpace.iterator(new Widget(), getIteratorConfiguration()); iterator.hasNext();) {
 			process(iterator.next(), false);
 		}
+		logger.info("End iterate all");
 
 		// listen for space objects
 		createContainer();
@@ -126,6 +146,8 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 	}
 
 	protected synchronized void createContainer() {
+		logger.info("Begin create container");
+
 		container = new SimpleNotifyEventListenerContainer();
 		container.setGigaSpace(primarySpace);
 		container.setTemplate(new Widget());
@@ -164,6 +186,8 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 		container.setBatchTime(DEFAULT_BATCH_TIMEOUT_MS);
 
 		container.afterPropertiesSet();
+
+		logger.info("End create container");
 	}
 
 	protected void handleLeaseRenewalEvent(LeaseRenewalEvent event) {
