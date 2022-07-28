@@ -1,7 +1,5 @@
 package gs.debug.hnpe.server.processor;
 
-import java.util.Iterator;
-
 import org.apache.log4j.Logger;
 import org.openspaces.core.GigaSpace;
 import org.openspaces.events.EventExceptionHandler;
@@ -72,13 +70,15 @@ public class WidgetProcessor implements InitializingBean, DisposableBean {
 			}
 		}
 
+		//TODO we're not inspecting the POJOs here because we don't want to trigger any extra Hibernate behavior
+
 		// read space objects
-		for (Iterator<Widget> iterator = space.iterator(new Widget(), getIteratorConfiguration()); iterator.hasNext();) {
-			process(iterator.next(), false);
-		}
+//		for (Iterator<Widget> iterator = space.iterator(new Widget(), getIteratorConfiguration()); iterator.hasNext();) {
+//			process(iterator.next(), false);
+//		}
 
 		// listen for space objects
-		createContainer();
+//		createContainer();
 	}
 
 	@Override
