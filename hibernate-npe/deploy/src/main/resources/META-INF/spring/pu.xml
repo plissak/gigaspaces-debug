@@ -32,9 +32,8 @@
 		</property>
 	</bean>
 
-	<import resource="classpath*:/Server-Logging.xml" />
-	<import resource="classpath*:/Server-Security.xml" />
-	<import resource="classpath*:/Common-User.xml" />
+	<import resource="classpath*:/Core-Server.xml" />
+	<import resource="classpath*:/Core-Common.xml" />
 	<import resource="classpath*:/HNPE-Space.xml" />
 	<import resource="classpath*:/HNPE-Server.xml" />
 	<import resource="classpath*:/HNPE-DatabaseConfig.xml" />

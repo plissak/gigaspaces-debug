@@ -20,6 +20,6 @@
 		</property>
 	</bean>
 
-	<import resource="classpath*:/Common-User.xml" />
+	<import resource="classpath*:/Core-Common.xml" />
 	<import resource="classpath*:/HNPE-Client-Spring.xml" />
 </beans>

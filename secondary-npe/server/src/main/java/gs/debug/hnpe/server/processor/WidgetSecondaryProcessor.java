@@ -4,12 +4,13 @@ import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 import org.openspaces.core.GigaSpace;
+import org.openspaces.core.space.mode.AfterSpaceModeChangeEvent;
+import org.openspaces.core.space.mode.PostPrimary;
 import org.openspaces.events.EventExceptionHandler;
 import org.openspaces.events.ListenerExecutionFailedException;
 import org.openspaces.events.SpaceDataEventListener;
 import org.openspaces.events.notify.SimpleNotifyEventListenerContainer;
 import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.TransactionStatus;
 
@@ -26,7 +27,7 @@ import net.jini.lease.LeaseListener;
 import net.jini.lease.LeaseRenewalEvent;
 
 @SuppressWarnings("deprecation")
-public class WidgetSecondaryProcessor implements InitializingBean, DisposableBean {
+public class WidgetSecondaryProcessor implements DisposableBean {
 	public static final int DEFAULT_BATCH_SIZE = 1000;
     public static final int DEFAULT_BATCH_TIMEOUT_MS = 200;
 
@@ -40,8 +41,18 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 		this.primarySpace = primarySpace;
 	}
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
+	@PostPrimary
+	public void startPostPrimary(AfterSpaceModeChangeEvent event) {
+		if (event.getSpace().isEmbedded()) {
+			logger.info("Entering post-primary embedded...");
+			iterateAndStartListening();
+		}
+		else {
+			logger.info("Post-primary but not embedded");
+		}
+	}
+
+	public void iterateAndStartListening() {
 
 		// read space objects
 		for (Iterator<Widget> iterator = primarySpace.iterator(new Widget(), getIteratorConfiguration()); iterator.hasNext();) {
@@ -54,6 +65,7 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 
 	@Override
 	public synchronized void destroy() throws Exception {
+		logger.info("Destroying bean...");
 		SimpleNotifyEventListenerContainer oldContainer = container;
 		if (oldContainer != null) {
 			container = null;
