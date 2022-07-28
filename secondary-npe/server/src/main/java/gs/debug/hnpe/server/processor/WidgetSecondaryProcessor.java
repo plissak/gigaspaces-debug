@@ -54,7 +54,12 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		logger.info("After properties set...");
-		readAll();
+		try {
+			readAll();
+		}
+		catch (Throwable t) {
+			logger.error("Read exception: " + t.getMessage(), t);
+		}
 		isPropertiesSet = true;
 	}
 
@@ -67,13 +72,13 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 				readAll();
 			}
 			catch (Throwable t) {
-				logger.error(t.getMessage(), t);
+				logger.error("Read exception: " + t.getMessage(), t);
 			}
 			try {
 				iterateAndStartListening();
 			}
 			catch (Throwable t) {
-				logger.error(t.getMessage(), t);
+				logger.error("Iterate exception: " + t.getMessage(), t);
 			}
 		}
 		else {
