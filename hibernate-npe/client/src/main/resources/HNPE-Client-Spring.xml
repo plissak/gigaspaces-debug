@@ -14,8 +14,8 @@
 	<os-core:distributed-tx-manager
 		id="transactionManager" />
 
-	<os-core:giga-space id="hpneGigaSpace"
-		space="hpneRemoteGigaSpace" tx-manager="transactionManager" />
+	<os-core:giga-space id="hnpeGigaSpace"
+		space="hnpeRemoteGigaSpace" tx-manager="transactionManager" />
 
 	<import resource="classpath*:/HNPE-Client-Base.xml" />
 </beans>

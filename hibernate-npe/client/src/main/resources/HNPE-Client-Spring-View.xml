@@ -13,13 +13,13 @@
 
 	<import resource="classpath*:/HNPE-Client-Base.xml" />
 
-	<os-core:local-view id="hpneViewGigaSpace"
-		space="hpneRemoteGigaSpace">
+	<os-core:local-view id="hnpeViewGigaSpace"
+		space="hnpeRemoteGigaSpace">
 		<os-core:view-query
 			class="gs.debug.hnpe.common.domain.Widget" where="" />
 	</os-core:local-view>
 
-	<os-core:giga-space id="hpneGigaSpace"
-		space="hpneViewGigaSpace" />
+	<os-core:giga-space id="hnpeGigaSpace"
+		space="hnpeViewGigaSpace" />
 
 </beans>

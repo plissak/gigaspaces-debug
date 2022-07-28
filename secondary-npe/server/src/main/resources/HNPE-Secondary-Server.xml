@@ -34,6 +34,6 @@
 	<bean id="widgetProcessor"
 		class="gs.debug.hnpe.server.processor.WidgetSecondaryProcessor"
 		autowire="byType"
-		p:primarySpace-ref="hpneGigaSpace" />
+		p:primarySpace-ref="hnpeGigaSpace" />
 
 </beans>

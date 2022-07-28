@@ -14,20 +14,20 @@
 	<os-core:distributed-tx-manager
 		id="transactionManager" />
 
-	<bean id="hpneSecondaryRemoteGigaSpace"
+	<bean id="hnpeSecondaryRemoteGigaSpace"
 		class="org.openspaces.core.space.UrlSpaceFactoryBean"
 		p:url="jini://*/*/HibernateSecondaryNPE" p:versioned="true"
 		p:userDetails-ref="userDetails" />
 
-	<os-core:giga-space id="hpneSecondaryGigaSpace"
-		space="hpneSecondaryRemoteGigaSpace" tx-manager="transactionManager" />
+	<os-core:giga-space id="hnpeSecondaryGigaSpace"
+		space="hnpeSecondaryRemoteGigaSpace" tx-manager="transactionManager" />
 
-	<bean id="hpneReadAccess"
-		class="gs.debug.hnpe.common.service.DebugReadAccess" autowire="byType"
-		p:space-ref="hpneSecondaryGigaSpace" />
+	<bean id="hnpeReadAccess"
+		class="gs.debug.hnpe.common.service.DebugSecondaryReadAccess" autowire="byType"
+		p:space-ref="hnpeSecondaryGigaSpace" />
 
 	<os-remoting:executor-proxy
-		id="hpneSecondaryWriteAccess" giga-space="hpneSecondaryGigaSpace"
+		id="hnpeSecondaryWriteAccess" giga-space="hnpeSecondaryGigaSpace"
 		interface="gs.debug.hnpe.common.service.DebugSecondaryWriteAccess" />
 
 </beans>

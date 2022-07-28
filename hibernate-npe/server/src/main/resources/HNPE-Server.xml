@@ -22,6 +22,10 @@
 		p:filter-ref="hnpeAccessControlFilter" p:activeWhenBackup="false"
 		p:operationCodesNames-ref="filterOperationCodes" />
 
+	<bean id="debugReadAccess"
+		class="gs.debug.hnpe.common.service.DebugReadAccess" autowire="byType"
+		p:space-ref="hnpeGigaSpace" />
+
 	<bean id="debugWriteAccess"
 		class="gs.debug.hnpe.server.service.DebugWriteAccessImpl"
 		autowire="byType"

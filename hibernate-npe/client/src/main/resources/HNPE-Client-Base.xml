@@ -11,17 +11,17 @@
   http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd
   http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
 
-	<bean id="hpneRemoteGigaSpace"
+	<bean id="hnpeRemoteGigaSpace"
 		class="org.openspaces.core.space.UrlSpaceFactoryBean"
 		p:url="jini://*/*/HibernateNPE" p:versioned="true"
 		p:userDetails-ref="userDetails" />
 
-	<bean id="hpneReadAccess"
+	<bean id="hnpeReadAccess"
 		class="gs.debug.hnpe.common.service.DebugReadAccess" autowire="byType"
-		p:space-ref="hpneGigaSpace" />
+		p:space-ref="hnpeGigaSpace" />
 
 	<os-remoting:executor-proxy
-		id="hpneWriteAccess" giga-space="hpneGigaSpace"
+		id="hnpeWriteAccess" giga-space="hnpeGigaSpace"
 		interface="gs.debug.hnpe.common.service.DebugWriteAccess" />
 
 </beans>
