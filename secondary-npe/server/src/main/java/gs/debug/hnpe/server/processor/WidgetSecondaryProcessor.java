@@ -11,6 +11,8 @@ import org.openspaces.events.ListenerExecutionFailedException;
 import org.openspaces.events.SpaceDataEventListener;
 import org.openspaces.events.notify.SimpleNotifyEventListenerContainer;
 import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.TransactionStatus;
 
@@ -22,33 +24,50 @@ import com.gigaspaces.events.batching.BatchRemoteEvent;
 import com.j_spaces.core.client.EntryArrivedRemoteEvent;
 
 import gs.debug.hnpe.common.domain.Widget;
+import gs.debug.hnpe.common.service.DebugReadAccess;
 import net.jini.core.event.RemoteEvent;
 import net.jini.lease.LeaseListener;
 import net.jini.lease.LeaseRenewalEvent;
 
 @SuppressWarnings("deprecation")
-public class WidgetSecondaryProcessor implements DisposableBean {
+public class WidgetSecondaryProcessor implements InitializingBean, DisposableBean {
 	public static final int DEFAULT_BATCH_SIZE = 1000;
     public static final int DEFAULT_BATCH_TIMEOUT_MS = 200;
 
+    private DebugReadAccess readAccess;
 	private GigaSpace primarySpace;
 
 	private SimpleNotifyEventListenerContainer container;
 	private Logger logger = Logger.getLogger(getClass());
+	private boolean isPropertiesSet;
+
+	@Autowired
+	public void setReadAccess(DebugReadAccess readAccess) {
+		this.readAccess = readAccess;
+	}
 
 	@Required
 	public void setPrimarySpace(GigaSpace primarySpace) {
 		this.primarySpace = primarySpace;
 	}
 
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		logger.info("After properties set...");
+		for (Widget widget : readAccess.getWidgets()) {
+			process(widget, false);
+		}
+		isPropertiesSet = true;
+	}
+
 	@PostPrimary
 	public void startPostPrimary(AfterSpaceModeChangeEvent event) {
-		if (event.getSpace().isEmbedded()) {
-			logger.info("Entering post-primary embedded...");
+		if (isPropertiesSet || event.getSpace().isEmbedded()) {
+			logger.info("Entering post-primary...");
 			iterateAndStartListening();
 		}
 		else {
-			logger.info("Post-primary but not embedded");
+			logger.info("Ignoring post-primary");
 		}
 	}
 
