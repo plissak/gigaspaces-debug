@@ -83,6 +83,20 @@ public class LogInitializer {
 			Logger.getLogger("log4j.logger.org.hibernate.SQL").setLevel(Level.toLevel(hibernateLogLevel));
 		}
 
+        //TODO always enable Hibernate debug for now
+
+		Logger.getLogger("log4j.logger.org.hibernate.internal").setLevel(Level.TRACE);
+        Logger.getLogger("org.hibernate.internal").setLevel(Level.TRACE);
+
+        Logger.getLogger("log4j.logger.org.hibernate.collection.internal").setLevel(Level.TRACE);
+        Logger.getLogger("org.hibernate.collection.internal").setLevel(Level.TRACE);
+
+        Logger.getLogger("log4j.logger.org.hibernate.engine.internal").setLevel(Level.TRACE);
+        Logger.getLogger("org.hibernate.engine.internal").setLevel(Level.TRACE);
+
+        Logger.getLogger("log4j.logger.org.hibernate.engine.transaction").setLevel(Level.TRACE);
+        Logger.getLogger("org.hibernate.engine.transaction").setLevel(Level.TRACE);
+
 		String host = System.getProperty("java.rmi.server.hostname");
 		logger.info("This PU instance running on: " + host);
 
