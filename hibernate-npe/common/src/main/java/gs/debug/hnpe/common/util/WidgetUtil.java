@@ -56,20 +56,20 @@ public class WidgetUtil {
 		widget.setUpdatedTime(new LocalDateTime());
 
 		Set<String> codes = new HashSet<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 3; i++) {
 			codes.add(randomString(16));
 		}
 		widget.setCodes(codes);
 
 		List<Long> identifiers = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 3; i++) {
 			identifiers.add(RANDOM.nextLong());
 		}
 		widget.setOrderedIdentifiers(identifiers);
 
 
 		Set<Part> parts = new HashSet<>();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 3; i++) {
 			Part part = new Part();
 			part.setName(randomString(12));
 			part.setComment(randomString(64));

@@ -53,7 +53,7 @@ public class WidgetProcessor implements InitializingBean, DisposableBean {
 	public void afterPropertiesSet() throws Exception {
 
 		// create space objects
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			Widget widget = WidgetUtil.randomWidget();
 			Widget saved = writeAccess.write(widget);
 
