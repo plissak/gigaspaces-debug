@@ -22,6 +22,7 @@ import com.gigaspaces.events.batching.BatchRemoteEvent;
 import com.j_spaces.core.client.EntryArrivedRemoteEvent;
 
 import gs.debug.hnpe.common.domain.Widget;
+import gs.debug.hnpe.common.service.DebugReadAccess;
 import gs.debug.hnpe.common.service.DebugWriteAccess;
 import gs.debug.hnpe.common.util.WidgetUtil;
 import net.jini.core.event.RemoteEvent;
@@ -31,9 +32,10 @@ import net.jini.lease.LeaseRenewalEvent;
 @SuppressWarnings("deprecation")
 public class WidgetProcessor implements InitializingBean, DisposableBean {
 	public static final int DEFAULT_BATCH_SIZE = 1000;
-    public static final int DEFAULT_BATCH_TIMEOUT_MS = 200;
+	public static final int DEFAULT_BATCH_TIMEOUT_MS = 200;
 
 	private GigaSpace space;
+	private DebugReadAccess readAccess;
 	private DebugWriteAccess writeAccess;
 
 	private SimpleNotifyEventListenerContainer container;
@@ -45,6 +47,11 @@ public class WidgetProcessor implements InitializingBean, DisposableBean {
 	}
 
 	@Autowired
+	public void setReadAccess(DebugReadAccess readAccess) {
+		this.readAccess = readAccess;
+	}
+
+	@Autowired
 	public void setWriteAccess(DebugWriteAccess writeAccess) {
 		this.writeAccess = writeAccess;
 	}
@@ -52,13 +59,16 @@ public class WidgetProcessor implements InitializingBean, DisposableBean {
 	@Override
 	public void afterPropertiesSet() throws Exception {
 
-		// create space objects
-		for (int i = 0; i < 10; i++) {
-			Widget widget = WidgetUtil.randomWidget();
-			Widget saved = writeAccess.write(widget);
+		// create space objects (if necessary)
+		Widget[] allWidgets = readAccess.getWidgets();
+		if (allWidgets == null || allWidgets.length < 1) {
+			for (int i = 0; i < 10; i++) {
+				Widget widget = WidgetUtil.randomWidget();
+				Widget saved = writeAccess.write(widget);
 
-			if (saved == null || saved.getId() == null) {
-				throw new Exception("Missing identifier");
+				if (saved == null || saved.getId() == null) {
+					throw new Exception("Missing identifier");
+				}
 			}
 		}
 
