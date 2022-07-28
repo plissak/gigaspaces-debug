@@ -15,9 +15,13 @@ insert into WIDGET_PART values (1001, 'Test Comment 1', 'Test Part 1', 5001);
 insert into WIDGET_PART values (1002, 'Test Comment 2', 'Test Part 2', 5001);
 insert into WIDGET_CODE values (5001, 'ABC-XYZ');
 insert into WIDGET_CODE values (5001, '123-456');
+insert into WIDGET_ID_TABLE values (5001, 12345, 0);
+insert into WIDGET_ID_TABLE values (5001, 512, 1);
 
 insert into WIDGET values (5002, '2022-07-27', 'Test Widget 2', '2022-07-27 12:12:12');
 insert into WIDGET_PART values (1003, 'Test Comment 3', 'Test Part 3', 5002);
 insert into WIDGET_PART values (1004, 'Test Comment 4', 'Test Part 4', 5002);
 insert into WIDGET_CODE values (5002, 'QWERTY1');
 insert into WIDGET_CODE values (5002, '!@#$%');
+insert into WIDGET_ID_TABLE values (5002, 54321, 0);
+insert into WIDGET_ID_TABLE values (5002, 1001, 1);
