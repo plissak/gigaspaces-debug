@@ -12,13 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.TransactionStatus;
 
-import com.gigaspaces.client.ReadModifiers;
-import com.gigaspaces.client.iterator.SpaceIteratorConfiguration;
-import com.gigaspaces.client.iterator.SpaceIteratorType;
 import com.gigaspaces.events.NotifyActionType;
 import com.gigaspaces.events.batching.BatchRemoteEvent;
 import com.j_spaces.core.client.EntryArrivedRemoteEvent;
 
+import gs.debug.core.common.util.SpaceUtil;
 import gs.debug.hnpe.common.domain.Widget;
 import gs.debug.hnpe.common.service.DebugReadAccess;
 import gs.debug.hnpe.common.service.DebugWriteAccess;
@@ -29,8 +27,6 @@ import net.jini.lease.LeaseRenewalEvent;
 
 @SuppressWarnings("deprecation")
 public class WidgetProcessor implements InitializingBean, DisposableBean {
-	public static final int DEFAULT_BATCH_SIZE = 1000;
-	public static final int DEFAULT_BATCH_TIMEOUT_MS = 200;
 
 	private GigaSpace space;
 	private DebugReadAccess readAccess;
@@ -115,14 +111,6 @@ public class WidgetProcessor implements InitializingBean, DisposableBean {
 		logger.error("GigaSpace notification exception [" + this + "]: " + exception.getMessage(), exception);
 	}
 
-	private SpaceIteratorConfiguration getIteratorConfiguration() {
-		SpaceIteratorConfiguration config = new SpaceIteratorConfiguration();
-		config.setBatchSize(DEFAULT_BATCH_SIZE);
-		config.setIteratorType(SpaceIteratorType.PREFETCH_UIDS); // w/o this the ISpaceFilter process method won't have a security context
-		config.setReadModifiers(ReadModifiers.READ_COMMITTED); // this is how GSIterator behaved by default
-		return config;
-	}
-
 	protected synchronized void createContainer() {
 		container = new SimpleNotifyEventListenerContainer();
 		container.setGigaSpace(space);
@@ -158,8 +146,8 @@ public class WidgetProcessor implements InitializingBean, DisposableBean {
 			}
 		});
 		container.setPassArrayAsIs(true);
-		container.setBatchSize(DEFAULT_BATCH_SIZE);
-		container.setBatchTime(DEFAULT_BATCH_TIMEOUT_MS);
+		container.setBatchSize(SpaceUtil.DEFAULT_BATCH_SIZE);
+		container.setBatchTime(SpaceUtil.DEFAULT_BATCH_TIMEOUT_MS);
 
 		container.afterPropertiesSet();
 	}
