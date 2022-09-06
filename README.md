@@ -57,3 +57,10 @@ The `NullPointerException` and relevant Hibernate debug messages will be located
 ~/logs/debug/HibernateSecondaryNPE/HibernateSecondaryNPE_1.log
 
 ```
+
+The `NullPointerException` appears in **any** remote client of the space object's PU.  That means a simple Java program to read the data will generate the exception.  Run the following program to read the data and attempt to print it:
+
+```
+gs.debug.hnpe.client.util.PrintWidgetsMain
+
+```
