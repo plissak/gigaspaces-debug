@@ -4,18 +4,20 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>gs.debug.tests.insufficient-data</groupId>
-	<artifactId>insufficient-data</artifactId>
-	<name>Insufficient Data In Class</name>
+	<artifactId>secondary-pu</artifactId>
+	<name>Insufficient Data In Class: Secondary</name>
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>gs.debug.tests</groupId>
-		<artifactId>debug-tests</artifactId>
+		<groupId>gs.debug.tests.insufficient-data</groupId>
+		<artifactId>insufficient-data</artifactId>
 		<version>${revision}</version>
 	</parent>
 
 	<modules>
-		<module>primary-pu</module>
-		<module>secondary-pu</module>
+		<module>common</module>
+		<module>client</module>
+		<module>server</module>
+		<module>deploy</module>
 	</modules>
 </project>
