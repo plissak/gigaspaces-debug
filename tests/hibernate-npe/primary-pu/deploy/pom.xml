@@ -4,17 +4,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>hibernate-npe-pu</artifactId>
 	<packaging>jar</packaging>
-	<name>Debug Hibernate NullPointerException: PU</name>
+	<name>Hibernate NullPointerException: Primary PU</name>
 
 	<parent>
-		<groupId>gs.debug.hibernate-npe</groupId>
-		<artifactId>hibernate-npe</artifactId>
+		<groupId>gs.debug.tests.hibernate-npe</groupId>
+		<artifactId>primary-pu</artifactId>
 		<version>${revision}</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>gs.debug.hibernate-npe</groupId>
+			<groupId>gs.debug.tests.hibernate-npe</groupId>
 			<artifactId>hibernate-npe-server</artifactId>
 			<version>${project.version}</version>
 		</dependency>

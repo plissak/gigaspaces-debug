@@ -141,8 +141,7 @@
 		<module>depends</module>
 		<module>core</module>
 		<module>pu-common</module>
-		<module>hibernate-npe</module>
-		<module>secondary-npe</module>
+		<module>tests</module>
 	</modules>
 
 	<build>

@@ -18,13 +18,7 @@
 			<artifactId>debug-core-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>gs.debug.hibernate-npe</groupId>
-			<artifactId>hibernate-npe-common</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>

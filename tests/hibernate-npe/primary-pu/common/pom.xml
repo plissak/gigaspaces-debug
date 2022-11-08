@@ -2,22 +2,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>secondary-npe-common</artifactId>
+	<artifactId>hibernate-npe-common</artifactId>
 	<packaging>jar</packaging>
-	<name>Debug Hibernate NullPointerException: Secondary Common</name>
+	<name>Hibernate NullPointerException: Primary Common</name>
 
 	<parent>
-		<groupId>gs.debug.secondary-npe</groupId>
-		<artifactId>secondary-npe</artifactId>
+		<groupId>gs.debug.tests.hibernate-npe</groupId>
+		<artifactId>primary-pu</artifactId>
 		<version>${revision}</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>gs.debug.depends</groupId>
-			<artifactId>depends-common</artifactId>
+			<groupId>gs.debug.core</groupId>
+			<artifactId>debug-core-common</artifactId>
 			<version>${project.version}</version>
-			<type>pom</type>
 		</dependency>
 	</dependencies>
 </project>

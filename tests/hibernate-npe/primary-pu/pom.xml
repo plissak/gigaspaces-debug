@@ -3,14 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>gs.debug.secondary-npe</groupId>
-	<artifactId>secondary-npe</artifactId>
-	<name>Debug Hibernate NullPointerException Secondary</name>
+	<groupId>gs.debug.tests.hibernate-npe</groupId>
+	<artifactId>primary-pu</artifactId>
+	<name>Hibernate NullPointerException: Primary</name>
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>gs.debug</groupId>
-		<artifactId>debug</artifactId>
+		<groupId>gs.debug.tests.hibernate-npe</groupId>
+		<artifactId>hibernate-npe</artifactId>
 		<version>${revision}</version>
 	</parent>
 

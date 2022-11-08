@@ -4,17 +4,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>secondary-npe-pu</artifactId>
 	<packaging>jar</packaging>
-	<name>Debug Hibernate NullPointerException: Secondary PU</name>
+	<name>Hibernate NullPointerException: Secondary PU</name>
 
 	<parent>
-		<groupId>gs.debug.secondary-npe</groupId>
-		<artifactId>secondary-npe</artifactId>
+		<groupId>gs.debug.tests.hibernate-npe</groupId>
+		<artifactId>secondary-pu</artifactId>
 		<version>${revision}</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>gs.debug.secondary-npe</groupId>
+			<groupId>gs.debug.tests.hibernate-npe</groupId>
 			<artifactId>secondary-npe-server</artifactId>
 			<version>${project.version}</version>
 		</dependency>

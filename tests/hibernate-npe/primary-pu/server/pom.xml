@@ -1,25 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>hibernate-npe-client</artifactId>
+	<artifactId>hibernate-npe-server</artifactId>
 	<packaging>jar</packaging>
-	<name>Debug Hibernate NullPointerException: Client</name>
+	<name>Hibernate NullPointerException: Primary Server</name>
 
 	<parent>
-		<groupId>gs.debug.hibernate-npe</groupId>
-		<artifactId>hibernate-npe</artifactId>
+		<groupId>gs.debug.tests.hibernate-npe</groupId>
+		<artifactId>primary-pu</artifactId>
 		<version>${revision}</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>gs.debug.hibernate-npe</groupId>
+			<groupId>gs.debug.tests.hibernate-npe</groupId>
 			<artifactId>hibernate-npe-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>gs.debug.core</groupId>
-			<artifactId>debug-core-client</artifactId>
+			<artifactId>debug-core-server</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
