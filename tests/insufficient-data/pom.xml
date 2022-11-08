@@ -3,19 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>gs.debug.tests</groupId>
-	<artifactId>debug-tests</artifactId>
-	<name>Debug Tests</name>
+	<groupId>gs.debug.tests.insufficient-data</groupId>
+	<artifactId>insufficient-data</artifactId>
+	<name>Insufficient Data In Class</name>
 	<packaging>pom</packaging>
 
 	<parent>
-		<groupId>gs.debug</groupId>
-		<artifactId>debug</artifactId>
+		<groupId>gs.debug.tests</groupId>
+		<artifactId>debug-tests</artifactId>
 		<version>${revision}</version>
 	</parent>
 
 	<modules>
-		<module>hibernate-npe</module>
-		<module>insufficient-data</module>
+		<module>primary-pu</module>
+<!--		<module>secondary-pu</module>-->
 	</modules>
 </project>

@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>insufficient-data-pu</artifactId>
+	<packaging>jar</packaging>
+	<name>Insufficient Data In Class: Primary PU</name>
+
+	<parent>
+		<groupId>gs.debug.tests.insufficient-data</groupId>
+		<artifactId>primary-pu</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>gs.debug.tests.insufficient-data</groupId>
+			<artifactId>insufficient-data-server</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>gs.debug.depends</groupId>
+						<artifactId>depends-deploy</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>zipfile</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptorRefs>
+								<descriptorRef>gigaspaces-assembly</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
