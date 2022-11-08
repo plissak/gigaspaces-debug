@@ -29,7 +29,9 @@ unzip pu-common/target/pu-common-1.0.0-SNAPSHOT.zip -d ${GS_HOME}/lib/optional/p
 ## Hibernate NPE
 Corresponding support ticket: [6820](https://support2.gigaspaces.com/support/tickets/6820)
 
-To demonstrate this bug, first bring up the grid by running the following script:
+To demonstrate this bug, first edit the root `pom.xml` file and change the "hibernate.version" property to "5.6.7.Final" which is the Hibernate version that GigaSpaces was built against as of the writing of the support ticket.  Note that version "5.3.10.Final" is the version that works.
+
+Bring up the grid by running the following script:
 
 ```
 scripts/hibernate-npe.sh grid
