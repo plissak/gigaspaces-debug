@@ -102,8 +102,6 @@
 				<exclude>joda-time:joda-time-hibernate</exclude>
 				<exclude>joda-time:joda-time</exclude>
 				<exclude>junit:junit</exclude>
-				<exclude>log4j:apache-log4j-extras</exclude>
-				<exclude>log4j:log4j</exclude>
 				<exclude>mysql:mysql-connector-java</exclude>
 				<exclude>net.bytebuddy:byte-buddy</exclude>
 				<exclude>net.sf.opencsv</exclude>
