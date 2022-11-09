@@ -4,6 +4,7 @@ import org.openspaces.core.GigaSpace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 
+import gs.debug.core.server.util.IdGenerator;
 import gs.debug.hnpe.common.domain.Part;
 import gs.debug.hnpe.common.domain.Widget;
 import gs.debug.hnpe.common.service.DebugWriteAccess;

@@ -36,7 +36,7 @@
 
 	<util:list id="hnpeInitLoadList">
 		<value>gs.debug.hnpe.common.domain.Widget</value>
-		<value>gs.debug.hnpe.server.domain.IdentifierDomain</value>
+		<value>gs.debug.core.server.domain.IdentifierDomain</value>
 	</util:list>
 
 	<util:list id="hnpeInitLoadQueryScanningList">
@@ -44,7 +44,7 @@
 
 	<util:list id="hnpeDomainPackages">
 		<value>gs.debug.hnpe.common.domain</value>
-		<value>gs.debug.hnpe.server.domain</value>
+		<value>gs.debug.core.server.domain</value>
 	</util:list>
 
 </beans>

@@ -1,4 +1,4 @@
-package gs.debug.hnpe.server.service;
+package gs.debug.core.server.util;
 
 public interface IdGenerator {
 

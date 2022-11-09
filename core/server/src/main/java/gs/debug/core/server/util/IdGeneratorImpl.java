@@ -1,9 +1,9 @@
-package gs.debug.hnpe.server.service;
+package gs.debug.core.server.util;
 
 import org.openspaces.core.GigaSpace;
 import org.springframework.beans.factory.annotation.Required;
 
-import gs.debug.hnpe.server.domain.IdentifierDomain;
+import gs.debug.core.server.domain.IdentifierDomain;
 
 @SuppressWarnings("deprecation")
 public class IdGeneratorImpl implements IdGenerator {

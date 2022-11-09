@@ -1,4 +1,4 @@
-package gs.debug.hnpe.server.domain;
+package gs.debug.core.server.domain;
 
 import java.io.Serializable;
 
