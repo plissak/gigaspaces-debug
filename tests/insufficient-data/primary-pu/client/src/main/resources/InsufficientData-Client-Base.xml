@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:os-core="http://www.openspaces.org/schema/core"
+	xmlns:os-jms="http://www.openspaces.org/schema/jms"
+	xmlns:os-events="http://www.openspaces.org/schema/events"
+	xmlns:os-remoting="http://www.openspaces.org/schema/remoting"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.openspaces.org/schema/core http://www.openspaces.org/schema/core/openspaces-core.xsd
+  http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd
+  http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd">
+
+	<bean id="insufficientDataRemoteGigaSpace"
+		class="org.openspaces.core.space.UrlSpaceFactoryBean"
+		p:url="jini://*/*/InsufficientData" p:versioned="true"
+		p:userDetails-ref="userDetails" />
+
+	<bean id="addressReadAccess"
+		class="gs.debug.insufficient.common.service.AddressReadAccess" autowire="byType"
+		p:space-ref="insufficientDataGigaSpace" />
+
+	<os-remoting:executor-proxy
+		id="addressWriteAccess" giga-space="insufficientDataGigaSpace"
+		interface="gs.debug.insufficient.common.service.AddressWriteAccess" />
+
+</beans>
