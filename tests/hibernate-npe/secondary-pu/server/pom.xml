@@ -8,7 +8,7 @@
 
 	<parent>
 		<groupId>gs.debug.tests.hibernate-npe</groupId>
-		<artifactId>secondary-pu</artifactId>
+		<artifactId>hibernate-npe-secondary</artifactId>
 		<version>${revision}</version>
 	</parent>
 

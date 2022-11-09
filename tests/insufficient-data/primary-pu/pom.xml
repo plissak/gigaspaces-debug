@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>gs.debug.tests.insufficient-data</groupId>
-	<artifactId>primary-pu</artifactId>
+	<artifactId>insufficient-data-primary</artifactId>
 	<name>Insufficient Data In Class: Primary</name>
 	<packaging>pom</packaging>
 

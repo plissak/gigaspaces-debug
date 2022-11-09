@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>gs.debug.tests.hibernate-npe</groupId>
-	<artifactId>primary-pu</artifactId>
+	<artifactId>hibernate-npe-primary</artifactId>
 	<name>Hibernate NullPointerException: Primary</name>
 	<packaging>pom</packaging>
 

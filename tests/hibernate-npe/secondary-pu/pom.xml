@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>gs.debug.tests.hibernate-npe</groupId>
-	<artifactId>secondary-pu</artifactId>
+	<artifactId>hibernate-npe-secondary</artifactId>
 	<name>Hibernate NullPointerException: Secondary</name>
 	<packaging>pom</packaging>
 

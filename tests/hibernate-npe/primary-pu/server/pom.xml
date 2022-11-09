@@ -6,7 +6,7 @@
 
 	<parent>
 		<groupId>gs.debug.tests.hibernate-npe</groupId>
-		<artifactId>primary-pu</artifactId>
+		<artifactId>hibernate-npe-primary</artifactId>
 		<version>${revision}</version>
 	</parent>
 

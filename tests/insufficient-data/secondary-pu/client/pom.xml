@@ -8,7 +8,7 @@
 
 	<parent>
 		<groupId>gs.debug.tests.insufficient-data</groupId>
-		<artifactId>secondary-pu</artifactId>
+		<artifactId>insufficient-data-secondary</artifactId>
 		<version>${revision}</version>
 	</parent>
 
