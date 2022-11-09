@@ -29,6 +29,7 @@ import org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 
+import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
 import com.gigaspaces.annotation.pojo.SpaceIndex;
 
@@ -38,6 +39,7 @@ import com.gigaspaces.annotation.pojo.SpaceIndex;
 		@TypeDef(name = "joda-localdate", typeClass = PersistentLocalDate.class),
 		@TypeDef(name = "joda-localdatetime", typeClass = PersistentLocalDateTime.class)
 })
+@SpaceClass(persist=true)
 public class Widget implements Serializable {
 	private static final long serialVersionUID = 3073785123613802499L;
 
