@@ -41,7 +41,6 @@
 
 	<bean id="addressProcessor"
 		class="gs.debug.insufficient.server.processor.AddressProcessor"
-		autowire="byType"
-		p:space-ref="insufficientDataGigaSpace" />
+		autowire="byType" />
 
 </beans>

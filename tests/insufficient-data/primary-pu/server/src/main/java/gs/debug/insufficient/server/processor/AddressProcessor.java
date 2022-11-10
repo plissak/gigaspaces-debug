@@ -1,27 +1,27 @@
 package gs.debug.insufficient.server.processor;
 
 import org.apache.log4j.Logger;
-import org.openspaces.core.GigaSpace;
+import org.openspaces.core.cluster.ClusterInfo;
+import org.openspaces.core.cluster.ClusterInfoContext;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 
+import gs.debug.core.common.util.SpaceUtil;
+import gs.debug.core.common.util.StringUtil;
+import gs.debug.insufficient.common.domain.Address;
 import gs.debug.insufficient.common.service.AddressReadAccess;
 import gs.debug.insufficient.common.service.AddressWriteAccess;
 
-@SuppressWarnings("deprecation")
 public class AddressProcessor implements InitializingBean {
+	private static final int RANDOM_ADDRESS_COUNT = 5;
 
-	private GigaSpace space;
+    @ClusterInfoContext
+    protected ClusterInfo clusterInfo;
+
 	private AddressReadAccess readAccess;
 	private AddressWriteAccess writeAccess;
 
 	private Logger logger = Logger.getLogger(getClass());
-
-	@Required
-	public void setSpace(GigaSpace space) {
-		this.space = space;
-	}
 
 	@Autowired
 	public void setReadAccess(AddressReadAccess readAccess) {
@@ -35,11 +35,43 @@ public class AddressProcessor implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		if (SpaceUtil.isEvenContainer(clusterInfo)) {
+			if (getAddressCount() == 0) {
+				logger.info("Creating random addresses in this partition");
+				createAddresses();
+			}
+			else {
+				logger.info("Addresses were created via SQL for this partition");
+			}
+		}
+		else {
+			logger.info("Not auto-generating addresses in this partition");
+		}
 
+		logger.info("Counted " + getAddressCount() + " addresses in this partition");
+	}
 
-		//TODO create random address objects only if the partition is even (or only one partition) AND no data is present
-		//TODO log activity
+	private void createAddresses() {
+		Long routingKey = SpaceUtil.getRoutingKey(clusterInfo);
+		for (int i = 0; i < RANDOM_ADDRESS_COUNT; i++) {
+			writeAccess.write(createAddress(routingKey));
+		}
+	}
 
+	private Address createAddress(Long routingKey) {
+		Address address = new Address();
+		address.setRoutingKey(routingKey);
+		address.setCity(StringUtil.randomString(12));
+		address.setName(StringUtil.randomString(12));
+		address.setState(StringUtil.randomLetterString(2).toUpperCase());
+		address.setStreet(StringUtil.randomString(12));
+		address.setZipCode(StringUtil.randomNumberString(5));
+		return address;
+	}
+
+	private int getAddressCount() {
+		Address[] addresses = readAccess.getAddresses();
+		return addresses == null ? 0 : addresses.length;
 	}
 
 }
