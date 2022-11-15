@@ -1,0 +1,54 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:os-core="http://www.openspaces.org/schema/core"
+	xmlns:os-jms="http://www.openspaces.org/schema/jms"
+	xmlns:os-events="http://www.openspaces.org/schema/events"
+	xmlns:os-remoting="http://www.openspaces.org/schema/remoting"
+	xmlns:os-sla="http://www.openspaces.org/schema/sla"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  							http://www.springframework.org/schema/beans/spring-beans.xsd
+  							http://www.springframework.org/schema/util
+							http://www.springframework.org/schema/util/spring-util.xsd
+  							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+  							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+  							http://www.openspaces.org/schema/core http://www.openspaces.org/schema/core/openspaces-core.xsd
+                            http://www.openspaces.org/schema/events http://www.openspaces.org/schema/events/openspaces-events.xsd
+                            http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/remoting/openspaces-remoting.xsd
+                            http://www.openspaces.org/schema/sla http://www.openspaces.org/schema/sla/openspaces-sla.xsd
+                            http://www.openspaces.org/schema/jms http://www.openspaces.org/schema/jms/openspaces-jms.xsd">
+
+	<bean id="initSQL" class="gs.debug.core.server.util.SQLParser"
+		factory-method="parse">
+		<constructor-arg value="${db.initFile}" />
+	</bean>
+
+	<bean id="insufficientDataSecondaryDb"
+		class="gs.debug.core.server.util.CustomDataSource"
+		destroy-method="close" p:driverClassName="${db.driverClassName}"
+		p:url="${db.url}" p:username="${db.user}" p:password="${db.password}"
+		p:validationQuery="${db.validationQuery}" p:initSqls-ref="initSQL"
+		p:showSql="${db.show_sql}" />
+
+	<bean id="insufficientDataSecondarySessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+		p:dataSource-ref="insufficientDataSecondaryDb" p:packagesToScan-ref="insufficientDataSecondaryDomainPackages">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db.hibernateDialect}</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">${db.hbm2ddl.auto}</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<prop key="hibernate.show_sql">${db.show_sql}</prop>
+				<prop key="hibernate.listeners.envers.autoRegister">${db.enable.level.audits}</prop>
+				<prop key="hibernate.enable_lazy_load_no_trans">${db.lazyLoadNoTransaction}</prop>
+			</props>
+		</property>
+	</bean>
+</beans>
