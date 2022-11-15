@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###############################################################################
-# Drives testing for Insufficient Data in Class module
+# Insufficient Data in Class module's Secondary PU Script
 ###############################################################################
 
 
@@ -11,15 +11,14 @@ source `dirname $0`/common.sh
 
 # start grid
 if [ "$1" == "grid" ]; then
-	start_grid --gsc=3
+	start_grid secondary --gsc=1
 	exit
 fi
 
 
 # deploy PU
 if [ "$1" == "deploy" ]; then
-	deploy_pu insufficient-data-pu 2
-	deploy_pu secondary-ins-data-pu
+	deploy_pu secondary secondary-ins-data-pu
 	exit
 fi
 
