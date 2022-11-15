@@ -11,11 +11,11 @@
 	<properties>
 
 		<!-- GigaSpaces -->
-		<gigaspaces.version>16.2.0</gigaspaces.version>
+		<gigaspaces.version>16.2.1</gigaspaces.version>
 		<hibernate.version>5.3.10.Final</hibernate.version>
-		<spring.version>5.3.19</spring.version>
-		<springboot.version>2.5.13</springboot.version>
-		<springsecurity.version>5.6.2</springsecurity.version>
+		<spring.version>5.3.22</spring.version>
+		<springsecurity.version>5.7.3</springsecurity.version>
+		<springboot.version>2.6.11</springboot.version>
 		<springfox.version>2.9.2</springfox.version>
 
 		<!-- Common -->
