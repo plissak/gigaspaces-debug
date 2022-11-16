@@ -95,9 +95,10 @@ scripts/insufficient-data-secondary.sh deploy
 
 ```
 
-The "Insufficient Data In Class" exception occurs in the primary PU, but will appear in the secondary PU's grid log which will be located in this file:
+The exception occurs in the primary PU, but is logged in the secondary PU's grid log which will be located in this file:
 
 ```
 ~/logs/debug/grid_secondary.log
 
 ```
+Search for "Insufficient Data In Class" in the file.
