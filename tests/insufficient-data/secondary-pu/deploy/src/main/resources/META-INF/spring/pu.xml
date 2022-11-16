@@ -36,8 +36,6 @@
 	<import resource="classpath*:/Core-Common.xml" />
 	<import resource="classpath*:/InsufficientData-Secondary-Space.xml" />
 	<import resource="classpath*:/InsufficientData-Secondary-Server.xml" />
-	<import resource="classpath*:/InsufficientData-Secondary-DatabaseConfig.xml" />
-	<import resource="classpath*:/InsufficientData-Secondary-DBCommon.xml" />
 
 	<import resource="classpath*:/InsufficientData-Client-Spring-View.xml" />
 </beans>
