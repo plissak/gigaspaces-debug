@@ -26,6 +26,16 @@ unzip pu-common/target/pu-common-1.0.0-SNAPSHOT.zip -d ${GS_HOME}/lib/optional/p
 ```
 
 
+## GigaSpaces Management Center
+When running the "Management Center" GUI via the "gs-ui.sh" script, the user and password are:
+
+```
+User: anonymous
+Password: password123
+
+```
+
+
 ## Hibernate NPE
 Corresponding support ticket: [6820](https://support2.gigaspaces.com/support/tickets/6820)
 
