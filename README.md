@@ -66,3 +66,33 @@ The `NullPointerException` appears in **any** remote client of the space object'
 gs.debug.hnpe.client.util.PrintWidgetsMain
 
 ```
+
+
+## Insufficient Data Exception
+Corresponding support ticket: [7070](https://support2.gigaspaces.com/support/tickets/7070)
+
+Bring up the first part of the grid by running the following script:
+
+```
+scripts/insufficient-data-primary.sh grid
+
+```
+Stopping this script will bring this part of the grid down.
+
+Next, in a separate terminal bring up the rest of the grid by running:
+
+```
+scripts/insufficient-data-secondary.sh grid
+
+```
+Stopping this script will bring this part of the grid down.
+
+Deploy the PUs in a separate terminal by running:
+
+```
+scripts/insufficient-data-primary.sh deploy
+scripts/insufficient-data-secondary.sh deploy
+
+```
+
+The "Insufficient Data In Class" exception occurs in the primary PU, but will appear in the secondary PU's grid log.
