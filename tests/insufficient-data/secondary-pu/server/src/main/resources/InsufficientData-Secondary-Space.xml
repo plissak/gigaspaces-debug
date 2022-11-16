@@ -44,8 +44,4 @@
 		<prop key="cluster-config.cache-loader.central-data-source">true</prop>
 	</util:properties>
 
-	<bean id="insufficientDataSecondaryServiceExporter"
-		class="org.openspaces.remoting.SpaceRemotingServiceExporter"
-		p:services-ref="insufficientDataSecondaryServiceList" />
-
 </beans>

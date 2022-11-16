@@ -22,15 +22,6 @@
 		p:filter-ref="insufficientDataSecondaryAccessControlFilter" p:activeWhenBackup="false"
 		p:operationCodesNames-ref="filterOperationCodes" />
 
-	<bean id="debugSecondaryWriteAccess"
-		class="gs.debug.insufficient.server.service.DebugSecondaryWriteAccessImpl"
-		autowire="byType"
-		p:space-ref="insufficientDataSecondaryGigaSpace" />
-		
-	<util:list id="insufficientDataSecondaryServiceList">
-		<ref bean="debugSecondaryWriteAccess" />
-	</util:list>
-
 	<bean id="addressProcessor"
 		class="gs.debug.insufficient.server.processor.AddressSecondaryProcessor"
 		autowire="byType"

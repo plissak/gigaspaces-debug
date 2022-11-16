@@ -6,7 +6,6 @@ import org.springframework.context.Lifecycle;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import gs.debug.insufficient.common.service.DebugSecondaryReadAccess;
-import gs.debug.insufficient.common.service.DebugSecondaryWriteAccess;
 
 public class DebugSecondaryClientConnection {
 	private static final String CONTEXT_PATH = "InsufficientData-Secondary-Client-Spring.xml";
@@ -26,9 +25,6 @@ public class DebugSecondaryClientConnection {
 		return getContext(CONTEXT_PATH).getBean(DebugSecondaryReadAccess.class);
 	}
 
-	public DebugSecondaryWriteAccess getWriteAccess() {
-		return getContext(CONTEXT_PATH).getBean(DebugSecondaryWriteAccess.class);
-	}
 
 	private synchronized ApplicationContext getContext(String path) {
 		if (context == null) {
