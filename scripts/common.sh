@@ -6,10 +6,8 @@
 
 # Basic Options
 export LOC_PORT=4174
-export LOG_GRID=/tmp/grid.log
-export LOG_DEPLOY=/tmp/deploy.log
 export ENABLE_DEBUG=Y
-
+export LOG_FOLDER=~/logs/debug
 export GS_CLI_VERBOSE=true
 
 
@@ -99,7 +97,8 @@ start_grid() {
 	shift
 
 	echo "Starting grid..."
-	${GS_HOME}/bin/gs.sh host run-agent $* 2>&1 | tee "${LOG_GRID}"
+	mkdir -p "${LOG_FOLDER}"
+	${GS_HOME}/bin/gs.sh host run-agent $* 2>&1 | tee "${LOG_FOLDER}/grid_${ZONE}.log"
 }
 
 
@@ -123,5 +122,6 @@ deploy_pu() {
 	fi
 
   	echo "Deploying ${ARTIFACT} PU..."
-	${GS_HOME}/bin/gs.sh --timeout=3600 pu deploy --max-instances-per-vm=1 --zones=${ZONES} --backups=0 --partitions=${PU_COUNT} "${LOOKUP_GROUPS}-${ARTIFACT}" "${ARTIFACT_JAR}" 2>&1 | tee "${LOG_DEPLOY}"  
+	mkdir -p "${LOG_FOLDER}"
+	${GS_HOME}/bin/gs.sh --timeout=3600 pu deploy --max-instances-per-vm=1 --zones=${ZONES} --backups=0 --partitions=${PU_COUNT} "${LOOKUP_GROUPS}-${ARTIFACT}" "${ARTIFACT_JAR}" 2>&1 | tee "${LOG_FOLDER}/deploy_${ZONE}.log"  
 }
