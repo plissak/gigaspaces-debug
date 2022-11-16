@@ -16,7 +16,7 @@
 
 	<bean id="insufficientDataSecondarySpace"
 		class="org.openspaces.core.space.UrlSpaceFactoryBean"
-		p:url="/./${insufficientDataSecondarySpaceName}" p:versioned="true" p:schema="default"
+		p:url="/./${insufficientDataSecondarySpaceName}" p:versioned="true" p:mirror="false" p:schema="default"
 		p:spaceDataSource-ref="insufficientDataSecondaryHibernateDataSource"
 		p:properties-ref="insufficientDataSecondarySpaceProperties">
 
