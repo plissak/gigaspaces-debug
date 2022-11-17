@@ -15,6 +15,8 @@ import gs.debug.insufficient.common.service.AddressWriteAccess;
 public class AddressProcessor implements InitializingBean {
 	private static final int RANDOM_ADDRESS_COUNT = 5;
 
+	private static boolean IS_READ_ADDRESSES = false;
+
     @ClusterInfoContext
     protected ClusterInfo clusterInfo;
 
@@ -35,20 +37,22 @@ public class AddressProcessor implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		if (SpaceUtil.isEvenContainer(clusterInfo)) {
-			if (getAddressCount() == 0) {
-				logger.info("Creating random addresses in this partition");
-				createAddresses();
+		if (IS_READ_ADDRESSES) {
+			if (SpaceUtil.isEvenContainer(clusterInfo)) {
+				if (getAddressCount() == 0) {
+					logger.info("Creating random addresses in this partition");
+					createAddresses();
+				}
+				else {
+					logger.info("Addresses were created via SQL for this partition");
+				}
 			}
 			else {
-				logger.info("Addresses were created via SQL for this partition");
+				logger.info("Not auto-generating addresses in this partition");
 			}
-		}
-		else {
-			logger.info("Not auto-generating addresses in this partition");
-		}
 
-		logger.info("Counted " + getAddressCount() + " addresses in this partition");
+			logger.info("Counted " + getAddressCount() + " addresses in this partition");
+		}
 	}
 
 	private void createAddresses() {
