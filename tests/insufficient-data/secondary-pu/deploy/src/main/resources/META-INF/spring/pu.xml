@@ -37,5 +37,5 @@
 	<import resource="classpath*:/InsufficientData-Secondary-Space.xml" />
 	<import resource="classpath*:/InsufficientData-Secondary-Server.xml" />
 
-	<import resource="classpath*:/InsufficientData-Client-Spring-View.xml" />
+	<import resource="classpath*:/InsufficientData-Client-Spring.xml" />
 </beans>
