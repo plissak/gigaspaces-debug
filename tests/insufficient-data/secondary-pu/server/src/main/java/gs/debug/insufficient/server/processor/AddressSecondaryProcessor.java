@@ -50,7 +50,7 @@ public class AddressSecondaryProcessor implements InitializingBean, DisposableBe
 	public void afterPropertiesSet() throws Exception {
 		logger.info("After properties set...");
 		try {
-			readAll();
+//			readAll();
 		}
 		catch (Throwable t) {
 			logger.error("Read exception: " + t.getMessage(), t);
@@ -69,12 +69,12 @@ public class AddressSecondaryProcessor implements InitializingBean, DisposableBe
 			catch (Throwable t) {
 				logger.error("Read exception: " + t.getMessage(), t);
 			}
-			try {
-				iterateAndStartListening();
-			}
-			catch (Throwable t) {
-				logger.error("Iterate exception: " + t.getMessage(), t);
-			}
+//			try {
+//				iterateAndStartListening();
+//			}
+//			catch (Throwable t) {
+//				logger.error("Iterate exception: " + t.getMessage(), t);
+//			}
 		}
 		else {
 			logger.info("Ignoring post-primary");
