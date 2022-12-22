@@ -9,6 +9,7 @@ export LOC_PORT=4174
 export ENABLE_DEBUG=Y
 export LOG_FOLDER=~/logs/debug
 export GS_CLI_VERBOSE=true
+export TIMEOUT=3600
 
 
 # Validation
@@ -124,5 +125,18 @@ deploy_pu() {
 
   	echo "Deploying ${ARTIFACT} PU..."
 	mkdir -p "${LOG_FOLDER}"
-	${GS_HOME}/bin/gs.sh --timeout=3600 pu deploy --max-instances-per-vm=1 --zones=${ZONES} --backups=0 --partitions=${PU_COUNT} "${LOOKUP_GROUPS}-${ARTIFACT}" "${ARTIFACT_JAR}" 2>&1 | tee "${LOG_FOLDER}/deploy_${ZONE}.log"  
+	${GS_HOME}/bin/gs.sh --timeout=${TIMEOUT} pu deploy --max-instances-per-vm=1 --zones=${ZONES} --backups=0 --partitions=${PU_COUNT} "${LOOKUP_GROUPS}-${ARTIFACT}" "${ARTIFACT_JAR}" 2>&1 | tee "${LOG_FOLDER}/deploy_${ZONE}.log"  
+}
+
+
+# Undeploy PU
+undeploy_pu() {
+	init_zone $1
+	shift
+
+	PU_NAME=${USER}"_"${ZONE}"-"$1
+
+  	echo "Undeploying ${PU_NAME} PU..."
+	mkdir -p "${LOG_FOLDER}"
+	${GS_HOME}/bin/gs.sh --timeout=${TIMEOUT} pu undeploy ${PU_NAME} 2>&1 | tee "${LOG_FOLDER}/undeploy_${ZONE}.log"  
 }

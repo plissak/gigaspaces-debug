@@ -24,5 +24,13 @@ if [ "$1" == "deploy" ]; then
 fi
 
 
+# undeploy PU
+if [ "$1" == "undeploy" ]; then
+	undeploy_pu generic secondary-npe-pu
+	undeploy_pu generic hibernate-npe-pu
+	exit
+fi
+
+
 # unknown argument
 echo "Must run with either 'grid' or 'deploy' arguments"
