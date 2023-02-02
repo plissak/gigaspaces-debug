@@ -37,8 +37,8 @@ public class PrintAddressesMain {
 
 	public void iterateAll() {
 		logger.info("Begin iterate all");
-		for (Iterator<Address> iterator = InsufficientDataClientConnection.getSpace().iterator(new Address(),
-				SpaceUtil.getIteratorConfiguration()); iterator.hasNext();) {
+		for (Iterator<Address> iterator = SpaceUtil.iterator(InsufficientDataClientConnection.getSpace(), new Address()); iterator
+				.hasNext();) {
 			process(iterator.next(), false);
 		}
 		logger.info("End iterate all");

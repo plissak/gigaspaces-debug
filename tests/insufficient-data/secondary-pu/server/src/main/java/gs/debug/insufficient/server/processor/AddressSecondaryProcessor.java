@@ -93,7 +93,7 @@ public class AddressSecondaryProcessor implements InitializingBean, DisposableBe
 
 		// read space objects
 		logger.info("Begin iterate all");
-		for (Iterator<Address> iterator = primarySpace.iterator(new Address(), SpaceUtil.getIteratorConfiguration()); iterator.hasNext();) {
+		for (Iterator<Address> iterator = SpaceUtil.iterator(primarySpace, new Address()); iterator.hasNext();) {
 			process(iterator.next(), false);
 		}
 		logger.info("End iterate all");

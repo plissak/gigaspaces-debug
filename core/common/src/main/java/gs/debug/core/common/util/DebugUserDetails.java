@@ -25,7 +25,7 @@ public class DebugUserDetails implements UserDetails {
 
 		this.authorities = new Authority[list.size()];
 		for (int i = 0; i < list.size(); ++i) {
-			this.authorities[i] = AuthorityFactory.valueOf(list.get(i).toString());
+			this.authorities[i] = AuthorityFactory.create(list.get(i).toString());
 		}
 	}
 

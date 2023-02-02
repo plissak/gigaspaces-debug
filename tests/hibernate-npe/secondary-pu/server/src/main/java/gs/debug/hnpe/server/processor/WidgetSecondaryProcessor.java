@@ -93,7 +93,7 @@ public class WidgetSecondaryProcessor implements InitializingBean, DisposableBea
 
 		// read space objects
 		logger.info("Begin iterate all");
-		for (Iterator<Widget> iterator = primarySpace.iterator(new Widget(), SpaceUtil.getIteratorConfiguration()); iterator.hasNext();) {
+		for (Iterator<Widget> iterator = SpaceUtil.iterator(primarySpace, new Widget()); iterator.hasNext();) {
 			process(iterator.next(), false);
 		}
 		logger.info("End iterate all");
