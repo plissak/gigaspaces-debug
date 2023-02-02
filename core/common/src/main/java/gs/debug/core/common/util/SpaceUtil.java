@@ -1,5 +1,8 @@
 package gs.debug.core.common.util;
 
+import java.util.Iterator;
+
+import org.openspaces.core.GigaSpace;
 import org.openspaces.core.cluster.ClusterInfo;
 
 import com.gigaspaces.client.ReadModifiers;
@@ -16,6 +19,10 @@ public class SpaceUtil {
 		config.setIteratorType(SpaceIteratorType.PREFETCH_UIDS); // w/o this the ISpaceFilter process method won't have a security context
 		config.setReadModifiers(ReadModifiers.READ_COMMITTED); // this is how GSIterator behaved by default
 		return config;
+	}
+
+	public static <T> Iterator<T> iterator(GigaSpace space, T template) {
+		return space.iterator(template, getIteratorConfiguration());
 	}
 
 	/**

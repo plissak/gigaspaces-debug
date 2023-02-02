@@ -37,8 +37,7 @@ public class PrintWidgetsMain {
 
 	public void iterateAll() {
 		logger.info("Begin iterate all");
-		for (Iterator<Widget> iterator = DebugClientConnection.getSpace().iterator(new Widget(),
-				SpaceUtil.getIteratorConfiguration()); iterator.hasNext();) {
+		for (Iterator<Widget> iterator = SpaceUtil.iterator(DebugClientConnection.getSpace(), new Widget()); iterator.hasNext();) {
 			process(iterator.next(), false);
 		}
 		logger.info("End iterate all");
