@@ -20,11 +20,13 @@
 		p:authorityNames-ref="authorities" />
 
 	<util:list id="authorities">
+		<!-- 
 		<value>SPACE_ALTER</value>
 		<value>SPACE_CREATE</value>
 		<value>SPACE_EXECUTE</value>
 		<value>SPACE_READ</value>
 		<value>SPACE_WRITE</value>
 		<value>SPACE_TAKE</value>
+		-->
 	</util:list>
 </beans>
