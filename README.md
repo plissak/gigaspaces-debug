@@ -8,12 +8,24 @@ These environment variables must be set first:
 
 
 ## Maven Build
-This is a Maven project which must be built:
+So Maven can locate the GigaSpaces dependencies (and other dependencies), either change the repository URLs at the bottom of the
+root `pom.xml` to your own Maven repository, **or** configure a mirror in your `~/.m2/settings.xml` file:
+
+```
+<mirrors>
+  <mirror>
+    <id>maven-all</id>
+    <url>https://your-maven-repository/</url>
+    <mirrorOf>*</mirrorOf>
+  </mirror>
+</mirrors>
+```
+
+Run the following command to build the project:
 
 ```
 mvn package -Drevision=1.0.0-SNAPSHOT
 ```
-*Beforehand you'll have to update the root POM file (at bottom of file) to reference the appropriate Maven repository or repositories.*
 
 
 ## Install PU Common JARs
