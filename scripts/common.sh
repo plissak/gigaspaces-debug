@@ -138,5 +138,5 @@ undeploy_pu() {
 
   	echo "Undeploying ${PU_NAME} PU..."
 	mkdir -p "${LOG_FOLDER}"
-	${GS_HOME}/bin/gs.sh --timeout=${TIMEOUT} pu undeploy ${PU_NAME} 2>&1 | tee "${LOG_FOLDER}/undeploy_${ZONE}.log"  
+	${GS_HOME}/bin/gs.sh --timeout=${TIMEOUT} pu undeploy ${PU_NAME} --drain-mode=NONE 2>&1 | tee "${LOG_FOLDER}/undeploy_${ZONE}.log"  
 }
